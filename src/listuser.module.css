@@ -1,0 +1,324 @@
+
+.pag {
+     background-color: rgb(0, 0, 0);
+
+}
+.tr{
+     border: 1px solid black;
+}
+.th {
+
+     background-color: rgb(255, 255, 255);
+     width: 0px;
+     height: 0px;
+     padding: auto;
+     margin-left: 400px;
+     margin: center;
+     border: 1px solid black;
+}
+
+.dvi {
+     font-size: 15px;
+     display: flex;
+
+     display: flex;
+     flex-direction: row;
+}
+
+tr:hover {
+     background-color: #f1f1f1;
+}
+
+.registro {
+     font-size: 20px;
+     margin-left: 5%;
+     padding-top: 400px;
+     font-family: Inter;
+
+
+}
+
+.tabe {
+     margin-top: 89px;
+     margin-left: 5%;
+     width: 90%;
+     border-collapse: collapse;
+     
+}
+
+.TD {
+     /* border-bottom: 1px solid #6e6060; */
+     height: 40px;
+     width: 40px;
+     border: 1px solid rgb(66, 65, 65);
+
+}
+
+.acoes {
+     display: flex;
+     margin-top: 50%;
+}
+
+.editar {
+     background-color: rgb(15, 15, 44);
+     color: aliceblue;
+     width: 80px;
+     height: 25px;
+     cursor: pointer;
+     border-radius: 5px;
+     border: none;
+     margin-left: 20%;
+     font-family: Inter;
+}
+
+.buttoM {
+     margin-bottom: 30px;
+     margin-left: 10px;
+     width: px;
+     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+     background-color: rgb(15, 15, 44);
+     cursor: pointer;
+}
+
+.cancelar {
+     background-color: rgb(15, 15, 44);
+     cursor: pointer;
+     border-radius: 5px;
+     margin-left: 28px;
+     margin-top: 30px;
+     color: #f1f1f1;
+     width: 20%;
+     height: 28px;
+     border: none;
+     font-family: Inter;
+}
+
+/* .salvar {
+
+     background-color: rgb(15, 15, 44);
+     color: aliceblue;
+     margin-top: 50px;
+     cursor: pointer;
+     width: 20%;
+     height: 28px;
+     border: none;
+     border-radius: 5px;
+     margin-left: 190px;
+     color: #ffffff;
+     text-decoration: none;
+     font-family: Inter;
+} */
+
+/* .deletar {
+     background-color: rgb(15, 15, 44);
+     margin-top: 5px;
+     margin-left: 20px;
+     width: 80px;
+     height: 25px;
+     cursor: pointer;
+     border-radius: 5px;
+     border: none;
+     color: white;
+     font-family: Inter;
+
+} */
+
+/* .edite {
+     background-color: rgba(0, 0, 0, 0.8);
+     position: fixed;
+     top: 0;
+     right: 0;
+     left: 0;
+     bottom: 0;
+     text-align: center;
+     font-family: Inter;
+
+} */
+
+.nomestabela {
+     margin-left: 20%;
+     margin-top: 10px;
+     width: 50%;
+     height: 8%;
+     border-radius: 5px;
+     border-color: rgb(218, 216, 214);
+     border-collapse: collapse;
+
+
+}
+
+.actions {
+     /* display: flex; */
+     gap: 16px;
+}
+
+.TABELAMOVEL {
+     margin-left: 90px;
+     border: 1px solid rgb(66, 65, 65);
+     
+}
+
+.PESquisa {
+     /* display: flex; */
+     margin-top: 20px;
+     margin-left: 20px;
+     width: 50%;
+     height: 35px;
+     border-radius: 5px;
+     border-color: rgb(221, 216, 216);
+
+}
+
+.log {
+     background-color: rgba(235, 237, 238, 0.949);
+     width: 17%;
+     display: flex;
+     flex-direction: column;
+     height: 47rem;
+     border-style: 40px;
+}
+
+.log > label {
+     margin-left: 10px;
+     display: flex;
+     font-size: 20px;
+     font-family: Inter;
+
+}
+.log > div > a {
+     display: flex;
+     margin-top: 20px;
+     margin-left: 20px;
+     width: 215px;
+     height: 20%;
+     background-color: rgb(3, 3, 42);
+     color: aliceblue;
+     border-radius: 5px;
+
+     background-color: rgb(236, 236, 236);
+     text-align: justify;
+     color: black;
+     border: none;
+     font-family: Inter;
+
+     text-decoration: none;
+     background-color: rgba(235, 237, 238, 0.949);
+     border-radius: 5px;
+     color:black;
+}
+
+.divMenu {
+     position: relative;
+     display: inline-block;
+}
+
+.barra {
+     display: flex;
+     flex-direction: row;
+     top: 0;
+}
+
+/* .buttonMenu {
+     margin-top: 20px;
+     margin-left: 20px;
+     width: 215px;
+     height: 20%;
+     background-color: rgb(3, 3, 42);
+     color: aliceblue;
+     border-radius: 5px;
+
+     background-color: rgb(236, 236, 236);
+     text-align: justify;
+     color: black;
+     border: none;
+     font-family: Inter;
+
+
+} */
+
+/* .buttonMenu:hover {
+     background-color: #8695ad;
+} */
+
+.pesqMENU {
+     margin-top: 20px;
+     margin-left: 20px;
+     width: 80%;
+     height: 30px;
+     border-radius: 5px;
+     border-style: collapse;
+     border-color: rgb(136, 95, 95);
+
+}
+
+.TabelaNome {
+     /* display: flex; */
+     margin-left: 50px;
+}
+
+.TaBela {
+     background-color: #cac7c7;
+     text-align: center;
+     width: 30%;
+     height: 45%;
+     margin-left: 35%;
+     margin-top: 13%;
+     border-radius: 5px;
+     animation-direction: normal;
+     animation-duration: 2s;
+}
+
+
+.tabelaNASCI {
+     margin-left: 200px;
+     display: flex;
+}
+
+.tABELA {
+     display: flex;
+}
+
+.tABELA>div {
+     display: flex;
+     flex-direction: column;
+     width: 10%;
+}
+
+.tABELA>div>label {
+     text-align: start;
+     line-height: 24px;
+     margin-top: 15px;
+     margin-left: 3px;
+}
+
+.tABELA >div> input {
+     margin-top: 10px;
+     height: 24px;
+     border-style: double;
+     border-radius: 5px;
+     border-color: rgb(218, 216, 214);
+     width: 90%;
+     height: 30px;
+
+}
+
+.voltar {
+     margin-top: 160%;
+     margin-left: 60px;
+     font-size: 15px;
+}
+.tab {
+     text-align: justify;
+     font-family: Inter;
+     border-collapse:collapse;
+}
+
+.tab1 {
+     font-family: Inter;
+}
+.a{
+     display: flex;
+}
+input{
+     display: flex;
+}
