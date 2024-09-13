@@ -10,8 +10,8 @@ function Form() {
     email: '',
     mensagem: ''
   });
-   
-   const navigation = useNavigate ()
+
+  const navigation = useNavigate()
 
 
   const handleChange = (e) => {
@@ -22,56 +22,52 @@ function Form() {
     }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Dados do formulário:', formData);
- 
+
 
     try {
       const response = await fetch('http://localhost:3333/menssage', {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json', 
-      },
-      body: JSON.stringify(formData),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      
-  const result = await response.json();
-  console.log('Dados Salvos com sucesso:', result);
-   navigation ('/head')
-  
+
+      const result = await response.json();
+      console.log('Dados Salvos com sucesso:', result);
+      navigation('/head')
+
     } catch (error) {
       console.error('Erro ao salvar dados:', error);
-  }
+    }
   };
 
-  const saveData  = async (e) => {
- 
-    }
-  
+  const saveData = async (e) => {
+
+  }
+
 
   return (
-    <div className="diiv">
+    <div className="mainscreen">
 
-    <form onSubmit={handleSubmit} className='SUBMIT'> 
+      <form onSubmit={handleSubmit} className='sidemenu'>
 
-      <div className="nome">  
-        <label className="label">
-        Cadastro de usuários:
-        </label>
-          <input
-            type="text" name="nome" className="colun" value={formData.text}
-            onChange={handleChange}
-          />
-      </div>
-  
-      <button type="submit" id="enviar">Enviar</button>
-      
- </form>
- </div>
-     
+        <div className="lateral">
+          <label className="label">menu lateral</label>
+          <input type="search" className="sideentrance" value={formData.text} onChange={handleChange}/>
+        </div>
+
+        <button type="submit" className="button">botão 1</button>
+        <button type="submit" className="button">botão 2</button>
+        <button type="submit" className="button">botão 3</button>
+
+      </form>
+    </div>
+
   );
 }
-
 
 export default Form; 

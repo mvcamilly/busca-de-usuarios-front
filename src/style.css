@@ -1,72 +1,50 @@
-/* * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.diiv {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    height: 100vh;
-    background-color: rgb(186, 177, 177);
-
-
-} */
-
-/* form {
-    border-radius: 8px;
-    background-color: rgb(205, 193, 193);
-    border-color: black;
-
-    width: 450px;
-    height: 300px;
-} */
-
-/* .login {
-    font-size: 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-    margin-top: 30px;
-    margin-left: 40%;
-}
-
-.nome {
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    margin-left: 30px;
-
-
-
-}
-
-.colun {
-    width: 70%;
-
-    margin-top: 15px;
-    margin-left: 50px;
-}
-
-#enviar {
-    width: 20%;
-    height: 35px;
-    border-radius: 8px;
-    background-color: rgb(15, 15, 44);
-    color: white;
-    cursor: pointer;
-
-    margin-top: 40px;
-    margin-left: 65%;
-}
-
-.label {
-    margin-top: 10px;
-    margin-left: px;
-}
-
-.SUBMIT {
-    background-color: rgb(255, 255, 255);
+.sidemenu {
+    background-color: rgb(222, 221, 221);
     margin: 0;
     padding: 0%;
-} */
+    width: 19%;
+    height: 100%;
+}
+.lateral {
+    display: flex;
+    flex-direction: column;
+    font-size:17px;
+    /* margin-left: 30px; */
+}
+.sideentrance {
+    width: 70%;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+.button {
+   display: flex;
+   margin-top: 30px;
+   margin-left: 10%;
+   width: 70%;
+   height: 30px;
+   border-radius: 5px;
+   border: ridge;
+   background-color: rgb(255, 255, 255);
+}
+
+.mainscreen{
+    display: flex;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+
+}
+
+
+
+
+
+
+
+
+
