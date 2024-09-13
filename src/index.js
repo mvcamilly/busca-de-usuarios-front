@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './components/app/App';
 import { Toaster } from 'sonner';
 import AppRoutes from './routes/app.routes';
 // import reportWebVitals from './reportWebVitals';
