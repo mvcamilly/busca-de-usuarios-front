@@ -3,13 +3,13 @@ import style from './style.module.css'
 
 import React, { useState } from 'react';
 
-
-function Form() {
+// exportação de função
+export function Form() {
   const [formData, setFormData] = useState({
     nome: '',
   });
+  const [data, setData] = useState([]);
 
-  const navigation = useNavigate()
 
 
   const handleChange = (e) => {
@@ -48,6 +48,7 @@ function Form() {
   }
 
 
+  //rendederização de tabela
   return (
     <div className={style.mainscreen}>
 
@@ -65,24 +66,40 @@ function Form() {
       </form>
 
       <div className={style.mainpanel}>
-        <label >cadastro de usuário</label>
+        <label className={style.cadastre}>Cadastro de usuário</label>
         <input type='search' className={style.mainentrance}></input>
-        <modal>
-          <label className={style.name}>nome</label>
-          <input></input>
-          <label className={style.input}>sobrenome</label>
+        <div>
+          <label className={style.name}>Nome:</label>
           <input className={style.input}></input>
-        </modal>
-      </div>
-      <div>
-      <table>
+        </div>
+        <div>
+          <label className={style.sobrenome}>Sobrenome:</label>
+          <input className={style.input}></input>
+        </div>
+        <button className={style.buttonsave}>Salvar</button>
+
+
+        <table className={style.maintable}>
           <tr>
             <th>id</th>
             <th>nome</th>
             <th>sobrenome</th>
           </tr>
         </table>
+        <thead>
+          <tbody>
+            {data.map(item => {
+              return (
+                <tr key={item.id}>
+                  <td></td>
+                  <td></td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </thead>
       </div>
+
     </div>
 
   );

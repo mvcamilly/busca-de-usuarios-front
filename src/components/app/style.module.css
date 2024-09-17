@@ -1,26 +1,29 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+   margin: 0;
+   /* padding: 0; */
+   box-sizing: border-box;
 }
 
 .sidemenu {
-    background-color: rgb(222, 221, 221);
-    margin: 0;
-    padding: 0%;
-    width: 19%;
-    height: 100%;
+   background-color: rgb(222, 221, 221);
+   margin: 0;
+   padding: 0%;
+   width: 19%;
+   height: 100%;
 }
+
 .lateral {
-    display: flex;
-    flex-direction: column;
-    font-size:17px;
+   display: flex;
+   flex-direction: column;
+   font-size: 17px;
 }
+
 .sideentrance {
-    width: 70%;
-    margin-top: 15px;
-    margin-left: 30px;
+   width: 70%;
+   margin-top: 15px;
+   margin-left: 30px;
 }
+
 .button {
    display: flex;
    margin-top: 30px;
@@ -31,36 +34,60 @@
    border: ridge;
    background-color: rgb(255, 255, 255);
 }
-.mainscreen{
+
+.mainscreen {
    display: flex;
    height: 100vh;
    background-color: rgb(255, 255, 255);
 }
-.mainpanel{
+
+.mainpanel {
    margin-left: 4%;
 }
-.mainentrance{
-   margin-top: 20px;
+
+.cadastre {
+   font-size: 30px;
 }
-.labelpanel{
+.input{
+
+   width: 100%;
+   height: 25px;
+   border-radius: 5px;
+   border-color: rgb(217, 220, 223);
+  }
+
+.buttonsave{
+   margin-top: 20px;
+   margin-left: 100%;
+  }
+.mainentrance {
+   margin-top: 10px;
+   width: 120%;
+   height: 20px;
+   width: 180%;
+   height: 25px;
+   border-radius: 5px;
+   border-color: rgb(217, 220, 223);
+}
+
+.labelpanel {
    display: flex;
 }
-.name{
+
+.name {
+ font-size: 18px;
+}
+
+
+.table,tr,th {
+   border: 1px solid;
+
+}
+
+.table {
+   margin-top: 300%;
+}
+
+.maintable {
    margin-top: 40px;
 }
-
-.table, tr, th{
-   border: 1px solid;
-   /* display: flex; */
-}
-.table{
-   margin-top: 300%;
-   
-}
-
-
-
-
-
-
-
