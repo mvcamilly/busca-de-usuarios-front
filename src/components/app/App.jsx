@@ -11,7 +11,6 @@ export function Form() {
   const [data, setData] = useState([]);
 
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -20,9 +19,16 @@ export function Form() {
     }));
   };
 
+  // function getUsers() {
+  //   fecth('').then(response => response.json()).then(response => setData(response))
+  // }
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Dados do formulário:', formData);
+
 
 
     try {
@@ -43,10 +49,6 @@ export function Form() {
     }
   };
 
-  const saveData = async (e) => {
-
-  }
-
 
   //rendederização de tabela
   return (
@@ -55,13 +57,13 @@ export function Form() {
       <form onSubmit={handleSubmit} className={style.sidemenu}>
 
         <div className={style.lateral}>
-          <label className={style.label}>menu lateral</label>
-          <input type="search" className={style.sideentrance} value={formData.text} onChange={handleChange} />
+          <label className={style.label}>Menu Lateral</label>
+          <input type="search" className={style.sideentrance} value={formData.text} onChange={handleChange}/>
         </div>
 
-        <button type="submit" className={style.button}>botão 1</button>
-        <button type="submit" className={style.button}>botão 2</button>
-        <button type="submit" className={style.button}>botão 3</button>
+        <a type='#' className={style.a}>botão 1</a>
+        <a type='#' className={style.a}>botão 2</a>
+        <a type='#' className={style.a}>botão 3</a>
 
       </form>
 
@@ -73,7 +75,11 @@ export function Form() {
           <input className={style.input}></input>
         </div>
         <div>
-          <label className={style.sobrenome}>Sobrenome:</label>
+          <label className={style.name}>Sobrenome:</label>
+          <input className={style.input}></input>
+        </div>
+        <div>
+          <label className={style.name}>Telefone:</label>
           <input className={style.input}></input>
         </div>
         <button className={style.buttonsave}>Salvar</button>
@@ -81,9 +87,10 @@ export function Form() {
 
         <table className={style.maintable}>
           <tr>
-            <th>id</th>
-            <th>nome</th>
-            <th>sobrenome</th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Telefone</th>
           </tr>
         </table>
         <thead>
@@ -91,8 +98,9 @@ export function Form() {
             {data.map(item => {
               return (
                 <tr key={item.id}>
-                  <td></td>
-                  <td></td>
+                  <td className={style.td}>{item.nome}</td>
+                  <td className={style.td}>{item.sobrenome}</td>
+                  <td className={style.td}>{item.telefone}</td>
                 </tr>
               )
             })}

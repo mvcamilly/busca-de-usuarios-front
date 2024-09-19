@@ -5,7 +5,7 @@
 }
 
 .sidemenu {
-   background-color: rgb(222, 221, 221);
+   background-color: rgb(227, 230, 231);
    margin: 0;
    padding: 0%;
    width: 19%;
@@ -24,15 +24,19 @@
    margin-left: 30px;
 }
 
-.button {
-   display: flex;
+.a{
+   display: flex; 
    margin-top: 30px;
    margin-left: 10%;
    width: 70%;
    height: 30px;
    border-radius: 5px;
-   border: ridge;
-   background-color: rgb(255, 255, 255);
+   
+}
+
+.a:hover{
+   background-color: rgb(158, 175, 179);
+   cursor:pointer;
 }
 
 .mainscreen {
@@ -49,17 +53,27 @@
    font-size: 30px;
 }
 .input{
-
    width: 100%;
    height: 25px;
    border-radius: 5px;
-   border-color: rgb(217, 220, 223);
-  }
+   border-color: rgb(239, 240, 241);
+}
 
 .buttonsave{
    margin-top: 20px;
-   margin-left: 100%;
-  }
+   margin-left: 160%;
+   width: 30%;
+   height: 25px;
+   color: rgb(255, 255, 255);
+   border-radius: 6px;
+   background-color: rgb(29, 29, 81);
+}
+
+.buttonsave:hover{
+   cursor: pointer;
+   background-color: rgb(26, 29, 126);
+}
+
 .mainentrance {
    margin-top: 10px;
    width: 120%;
@@ -75,7 +89,8 @@
 }
 
 .name {
- font-size: 18px;
+   /* margin-top: 50px; */
+   font-size: 15px;
 }
 
 
@@ -90,4 +105,10 @@
 
 .maintable {
    margin-top: 40px;
+}
+
+.td{
+     height: 40px;
+     width: 40px;
+     border: 1px solid rgb(66, 65, 65);
 }
