@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import App from '../components/app/App';
-import Header from '../head';
-import Listuser from '../listuser';
+import Header from '../components/head/head';
+import Listuser from '../components/listuser/listuser';
 import Pagescad from '../pages/pages.cad';
 import Cadastro from '../pages/cadastro';
 
