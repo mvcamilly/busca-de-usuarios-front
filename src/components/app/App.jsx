@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import style from './style.module.css'
 
 import React, { useState } from 'react';
@@ -9,56 +9,103 @@ export function Form() {
     nome: '',
   });
   const [data, setData] = useState([]);
+  const [nome, setNome] = useState(['']);
+  const [sobrenome, setSobrenome] = useState(['']);
+  const [telefone, setTelefone] = useState([0]);
 
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-  // function getUsers() {
-  //   fecth('').then(response => response.json()).then(response => setData(response))
-  // }
+  document.getElementById('sidemenu').addEventListener('submit', function(event){
+    event.preventDefault(); //evita o envio da formulário padrao 
 
 
+    //coleta de dados do formulário
+    const id = document.getElementById('id').value;
+    const nome = document.getElementById('nome').value;
+    const sobrenome = document.getElementById('sobrenome').value;
+    const telefone = document.getElementById('telefone').value;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('Dados do formulário:', formData);
+    //enviar dados para a API
+    fecth('', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application.json',
+      },
+      body: JSON.stringify({id, nome, sobrenome, telefone}),
+    })
+
+    .then(reponse => {
+      if (!response) {
+        throw new Error('error ao salvar');
+      }
+      return response.json();
+    })
+
+    .then(data => {
+      document.getElementById('resultado').innerText ='usuario salvo';
+      console.log(data);
+    })
+    .catch(error => {
+      document.getElementById('resultado').innerText = error.message;
+    });
+  });
+
+//submit é interceptado para evitar o comportamento padrão de recarregar a pagina.
+//fetch é usada para enviar uma solicitação POST para a API com os dados no formato JSON.
 
 
 
-    try {
-      const response = await fetch('http://localhost:3333/menssage', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
 
-      const result = await response.json();
-      console.log('Dados Salvos com sucesso:', result);
-      // navigation('/head')
 
-    } catch (error) {
-      console.error('Erro ao salvar dados:', error);
-    }
-  };
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value
+  //   }));
+  // };
+
+
+  // // function getUsers() {
+  // //   fecth('').then(response => response.json()).then(response => setData(response))
+  // // }  
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log('Dados do formulário:', formData);
+
+
+
+  //   try {
+  //     const response = await fetch('http://localhost:3333/menssage', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     const result = await response.json();
+  //     console.log('Dados Salvos com sucesso:', result);
+  //     // navigation('/head')
+
+  //   } catch (error) {
+  //     console.error('Erro ao salvar dados:', error);
+  //   }
+  // };
+
 
 
   //rendederização de tabela
   return (
     <div className={style.mainscreen}>
 
-      <form onSubmit={handleSubmit} className={style.sidemenu}>
+      <form onSubmit={handleSubmit} className={style.sidemenu} id="sidemenu">
 
         <div className={style.lateral}>
           <label className={style.label}>Menu Lateral</label>
-          <input type="search" className={style.sideentrance} value={formData.text} onChange={handleChange}/>
+          <input type="search" className={style.sideentrance} value={formData.text} onChange={handleChange} />
         </div>
 
         <a type='#' className={style.a}>botão 1</a>
@@ -72,15 +119,15 @@ export function Form() {
         <input type='search' className={style.mainentrance}></input>
         <div>
           <label className={style.name}>Nome:</label>
-          <input className={style.input}></input>
+          <input className={style.input} onChange={(e) => setNome(e.target.value)}></input>
         </div>
         <div>
           <label className={style.name}>Sobrenome:</label>
-          <input className={style.input}></input>
+          <input className={style.input} onChange={(e) => setSobrenome(e.target.value)}></input>
         </div>
         <div>
           <label className={style.name}>Telefone:</label>
-          <input className={style.input}></input>
+          <input type='number' className={style.input} onChange={(e) => setTelefone(e.target.value)}></input>
         </div>
         <button className={style.buttonsave}>Salvar</button>
 
