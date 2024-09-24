@@ -1,7 +1,7 @@
 // import { useNavigate } from 'react-router-dom';
 import style from './style.module.css'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // exportação de função
 export function Form() {
@@ -14,86 +14,80 @@ export function Form() {
   const [telefone, setTelefone] = useState([0]);
 
 
-  document.getElementById('sidemenu').addEventListener('submit', function(event){
-    event.preventDefault(); //evita o envio da formulário padrao 
+  // document.getElementById('sidemenu').addEventListener('click', function(event){
+  //   event.preventDefault(); //evita o envio da formulário padrao 
 
 
-    //coleta de dados do formulário
-    const id = document.getElementById('id').value;
-    const nome = document.getElementById('nome').value;
-    const sobrenome = document.getElementById('sobrenome').value;
-    const telefone = document.getElementById('telefone').value;
+  //   //coleta de dados do formulário
+  //   const id = document.getElementById('id').value;
+  //   const nome = document.getElementById('nome').value;
+  //   const sobrenome = document.getElementById('sobrenome').value;
+  //   const telefone = document.getElementById('telefone').value;
 
-    //enviar dados para a API
-    fecth('', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application.json',
-      },
-      body: JSON.stringify({id, nome, sobrenome, telefone}),
-    })
+  //   //enviar dados para a API
+  //   fetch('', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-type': 'application.json',
+  //     },
+  //     body: JSON.stringify({id, nome, sobrenome, telefone}),
+  //   })
 
-    .then(reponse => {
-      if (!response) {
-        throw new Error('error ao salvar');
-      }
-      return response.json();
-    })
+  //   .then(response => {
+  //     if (!response) {
+  //       throw new Error('error ao salvar');
+  //     }
+  //     return response.json();
+  //   })
 
-    .then(data => {
-      document.getElementById('resultado').innerText ='usuario salvo';
-      console.log(data);
-    })
-    .catch(error => {
-      document.getElementById('resultado').innerText = error.message;
-    });
-  });
+  //   .then(data => {
+  //     document.getElementById('resultado').innerText ='usuario salvo';
+  //     console.log(data);
+  //   })
+  //   .catch(error => {
+  //     document.getElementById('resultado').innerText = error.message;
+  //   });
+  // });
 
 //submit é interceptado para evitar o comportamento padrão de recarregar a pagina.
 //fetch é usada para enviar uma solicitação POST para a API com os dados no formato JSON.
 
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
 
 
+  // function getUsers() {
+  //   fecth('').then(response => response.json()).then(response => setData(response))
+  // }  
 
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value
-  //   }));
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Dados do formulário:', formData);
 
+    try {
+      const response = await fetch('http://localhost:3333/menssage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-  // // function getUsers() {
-  // //   fecth('').then(response => response.json()).then(response => setData(response))
-  // // }  
+      const result = await response.json();
+      console.log('Dados Salvos com sucesso:', result);
+      // navigation('/head')
 
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log('Dados do formulário:', formData);
-
-
-
-  //   try {
-  //     const response = await fetch('http://localhost:3333/menssage', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     const result = await response.json();
-  //     console.log('Dados Salvos com sucesso:', result);
-  //     // navigation('/head')
-
-  //   } catch (error) {
-  //     console.error('Erro ao salvar dados:', error);
-  //   }
-  // };
+    } catch (error) {
+      console.error('Erro ao salvar dados:', error);
+    }
+  };
 
 
 
@@ -108,7 +102,7 @@ export function Form() {
           <input type="search" className={style.sideentrance} value={formData.text} onChange={handleChange} />
         </div>
 
-        <a type='#' className={style.a}>botão 1</a>
+        <a type='#' className={style.a}>Geral</a>
         <a type='#' className={style.a}>botão 2</a>
         <a type='#' className={style.a}>botão 3</a>
 
@@ -116,7 +110,7 @@ export function Form() {
 
       <div className={style.mainpanel}>
         <label className={style.cadastre}>Cadastro de usuário</label>
-        <input type='search' className={style.mainentrance}></input>
+        {/* <input type='search' className={style.mainentrance}></input> */}
         <div>
           <label className={style.name}>Nome:</label>
           <input className={style.input} onChange={(e) => setNome(e.target.value)}></input>
@@ -160,4 +154,4 @@ export function Form() {
   );
 }
 
-export default Form; 
+export default Form;
