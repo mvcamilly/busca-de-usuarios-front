@@ -5,13 +5,38 @@ import React, { useEffect, useState } from 'react';
 
 // exportação de função
 export function Form() {
-  const [formData, setFormData] = useState({
-    nome: '',
-  });
+  const [formData, setFormData] = useState({nome: '',});
   const [data, setData] = useState([]);
   const [nome, setNome] = useState(['']);
   const [sobrenome, setSobrenome] = useState(['']);
   const [telefone, setTelefone] = useState([0]);
+
+
+//botão de salvar
+  function getUsers() {
+    fetch('htt p://localhost:3333/cadastro').then(response => response.json()).then(response => setData(response))
+  };
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch(`http//localhost:3333/cadastro`, {
+      method: 'POST',
+      headers: {
+        'Content-TYPE': 'Application/json'
+      },
+      body: JSON.stringify({ id: nome, sobrenome, telefone })
+    }).then(() => {
+      getUsers()
+    })
+
+    setNome('');
+    setSobrenome('');
+    setTelefone('');
+  };
+
+
 
 
   const handleChange = (e) => {
@@ -20,30 +45,6 @@ export function Form() {
       ...prevData,
       [name]: value
     }));
-  };
-
-  // function.createElement
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('Dados do formulário:', formData);
-
-    try {
-      const response = await fetch('http://localhost:3333/cadastro', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-      console.log('Dados Salvos com sucesso:', result);
-      // navigation('/head')
-
-    } catch (error) {
-      console.error('Erro ao salvar dados:', error);
-    }
   };
 
 
@@ -79,7 +80,7 @@ export function Form() {
           <label className={style.name}>Telefone:</label>
           <input type='number' className={style.input} onChange={(e) => setTelefone(e.target.value)}></input>
         </div>
-        <button className={style.buttonsave}>Salvar</button>
+        <button className={style.buttonsave} onClick={handleSubmit}>Salvar</button>
 
 
 

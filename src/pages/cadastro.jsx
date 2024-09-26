@@ -11,7 +11,7 @@ export function Form() {
   const [password, setPassword] = useState('');
   const [editData, setData] = useState([]);
   const [usuarioId, setUsuarioID] = useState();
-  const [item, setItem] = useState()
+  // const [item, setItem] = useState()
   const [editId, setEditId] = useState(null)
   const [editName, setEditName] = useState('')
 
@@ -27,10 +27,10 @@ export function Form() {
   };
 
 
-  const hendleEdit = (id, nome) => {
-    setEditId(id);
-    setEditName(nome);
-  };
+  // const hendleEdit = (id, nome) => {
+  //   setEditId(id);
+  //   setEditName(nome);
+  // };
 
 
   const [name, setName] = useState('')
@@ -119,9 +119,9 @@ export function Form() {
 
           <button type="submit" onClick={handleSubmit}>Salvar</button>
         </form>
-        <TabelaRegistro  editData={editData}/>
+        <TabelaRegistro editData={editData} />
 
-  
+
       </div>
 
       {
