@@ -14,45 +14,6 @@ export function Form() {
   const [telefone, setTelefone] = useState([0]);
 
 
-  // document.getElementById('sidemenu').addEventListener('click', function(event){
-  //   event.preventDefault(); //evita o envio da formulário padrao 
-
-
-  //   //coleta de dados do formulário
-  //   const id = document.getElementById('id').value;
-  //   const nome = document.getElementById('nome').value;
-  //   const sobrenome = document.getElementById('sobrenome').value;
-  //   const telefone = document.getElementById('telefone').value;
-
-  //   //enviar dados para a API
-  //   fetch('', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-type': 'application.json',
-  //     },
-  //     body: JSON.stringify({id, nome, sobrenome, telefone}),
-  //   })
-
-  //   .then(response => {
-  //     if (!response) {
-  //       throw new Error('error ao salvar');
-  //     }
-  //     return response.json();
-  //   })
-
-  //   .then(data => {
-  //     document.getElementById('resultado').innerText ='usuario salvo';
-  //     console.log(data);
-  //   })
-  //   .catch(error => {
-  //     document.getElementById('resultado').innerText = error.message;
-  //   });
-  // });
-
-//submit é interceptado para evitar o comportamento padrão de recarregar a pagina.
-//fetch é usada para enviar uma solicitação POST para a API com os dados no formato JSON.
-
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -61,18 +22,14 @@ export function Form() {
     }));
   };
 
-
-  // function getUsers() {
-  //   fecth('').then(response => response.json()).then(response => setData(response))
-  // }  
-
+  // function.createElement
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Dados do formulário:', formData);
 
     try {
-      const response = await fetch('http://localhost:3333/menssage', {
+      const response = await fetch('http://localhost:3333/cadastro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +47,6 @@ export function Form() {
   };
 
 
-
   //rendederização de tabela
   return (
     <div className={style.mainscreen}>
@@ -103,8 +59,8 @@ export function Form() {
         </div>
 
         <a type='#' className={style.a}>Geral</a>
-        <a type='#' className={style.a}>botão 2</a>
-        <a type='#' className={style.a}>botão 3</a>
+        <a type='#' className={style.a}>Cadastros</a>
+        <a type='#' className={style.a}>Registros</a>
 
       </form>
 
@@ -124,6 +80,8 @@ export function Form() {
           <input type='number' className={style.input} onChange={(e) => setTelefone(e.target.value)}></input>
         </div>
         <button className={style.buttonsave}>Salvar</button>
+
+
 
 
         <table className={style.maintable}>
