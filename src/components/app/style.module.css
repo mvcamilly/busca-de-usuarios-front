@@ -92,10 +92,8 @@
    font-size: 15px;
 }
 
-
-.table,tr,th {
-   border: 1px solid;
-
+.table {
+    border-bottom: 1px solid #ddd;
 }
 
 .table {
@@ -106,8 +104,8 @@
    margin-top: 40px;
 }
 
-.td{
+.td, th, tr{
      height: 40px;
      width: 40px;
-     border: 1px solid rgb(66, 65, 65);
+     border-bottom: 1px solid #adadad;
 }

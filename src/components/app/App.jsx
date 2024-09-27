@@ -5,39 +5,35 @@ import React, { useEffect, useState } from 'react';
 
 // exportação de função
 export function Form() {
-  const [formData, setFormData] = useState({nome: '',});
+  const [formData, setFormData] = useState({ nome: '', });
   const [data, setData] = useState([]);
-  const [nome, setNome] = useState(['']);
-  const [sobrenome, setSobrenome] = useState(['']);
+  const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
   const [telefone, setTelefone] = useState([0]);
 
 
-//botão de salvar
+  //botão de salvar
   function getUsers() {
-    fetch('htt p://localhost:3333/cadastro').then(response => response.json()).then(response => setData(response))
+    fetch('http://localhost:3333/cadastro').then(response => response.json()).then(response => setData(response))
   };
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http//localhost:3333/cadastro`, {
+    fetch(`http://localhost:3333/cadastro`, {
       method: 'POST',
       headers: {
         'Content-TYPE': 'Application/json'
       },
-      body: JSON.stringify({ id: nome, sobrenome, telefone })
+      body: JSON.stringify({ nome, sobrenome, telefone })
     }).then(() => {
       getUsers()
     })
+
 
     setNome('');
     setSobrenome('');
     setTelefone('');
   };
-
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +43,16 @@ export function Form() {
     }));
   };
 
+
+  //função delete 
+  const deleteUSer = async (id) => {
+    console.log(id)
+    fetch(`http://localhosgt:3333/cadastro/${id}`, {
+      method: 'DELETE', 
+    }).then(() => {
+      getUsers()
+    })
+  }
 
   //rendederização de tabela
   return (
@@ -98,6 +104,7 @@ export function Form() {
             {data.map(item => {
               return (
                 <tr key={item.id}>
+                  <td className={style.td}>{item.id}</td>
                   <td className={style.td}>{item.nome}</td>
                   <td className={style.td}>{item.sobrenome}</td>
                   <td className={style.td}>{item.telefone}</td>
