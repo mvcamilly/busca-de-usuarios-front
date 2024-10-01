@@ -7,8 +7,6 @@ import { toast } from 'sonner';
 export function Header() {
 
 
-  const [alert, setAlert] = useState('');
-
   const [formData, setFormData] = useState({
     nome: '',
     telefone: '',
@@ -53,8 +51,6 @@ export function Header() {
       console.error('Erro ao salvar dados:', error);
     }
   }
-
-
 
 
   return (

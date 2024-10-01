@@ -2,8 +2,9 @@
 import style from './style.module.css'
 
 import React, { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 
-// exportação de função
+//exportação de função
 export function Form() {
   const [formData, setFormData] = useState({ nome: '', });
   const [data, setData] = useState([]);
@@ -19,16 +20,22 @@ export function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3333/cadastro`, {
+    if (!formData.nome || !formData.sobrenome || !formData.telefone) {
+      console.log(formData)
+      toast.error('Preencha todos os dados abaixo')
+      return
+    }
+
+     fetch(`http://localhost:3333/cadastro`, {
       method: 'POST',
       headers: {
-        'Content-TYPE': 'Application/json'
+        'Content-type': 'Application/json'
       },
-      body: JSON.stringify({ nome, sobrenome, telefone })
-    }).then(() => {
+      body: JSON.stringify( formData ({ nome, sobrenome, telefone })),
+    })
+    .then(() => {
       getUsers()
     })
-
 
     setNome('');
     setSobrenome('');
@@ -44,11 +51,21 @@ export function Form() {
   };
 
 
+  function validarFormalario () {
+    const input = document.getElementById("campo1").value
+
+    if (!input) {
+      alert('preencha os campos necessários.');
+      return false;
+    }
+    return true;
+  };
+
   //função delete 
   const deleteUSer = async (id) => {
     console.log(id)
     fetch(`http://localhosgt:3333/cadastro/${id}`, {
-      method: 'DELETE', 
+      method: 'DELETE',
     }).then(() => {
       getUsers()
     })
@@ -58,7 +75,7 @@ export function Form() {
   return (
     <div className={style.mainscreen}>
 
-      <form onSubmit={handleSubmit} className={style.sidemenu} id="sidemenu">
+      <form onSubmit={handleSubmit} className={style.sidemenu} id="sidemenu" >
 
         <div className={style.lateral}>
           <label className={style.label}>Menu Lateral</label>
@@ -97,6 +114,7 @@ export function Form() {
             <th>Nome</th>
             <th>Sobrenome</th>
             <th>Telefone</th>
+            <th>Ações</th>
           </tr>
         </table>
         <thead>
@@ -108,6 +126,7 @@ export function Form() {
                   <td className={style.td}>{item.nome}</td>
                   <td className={style.td}>{item.sobrenome}</td>
                   <td className={style.td}>{item.telefone}</td>
+                  <td className={style.td}>{item.acoes}</td>
                 </tr>
               )
             })}

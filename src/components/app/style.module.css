@@ -51,9 +51,10 @@
 
 .cadastre {
    font-size: 30px;
+   /* margin-top: 40px; */
 }
 .input{
-   width: 100%;
+   width: 60%;
    height: 25px;
    border-radius: 5px;
    border-color: rgb(239, 240, 241);
@@ -61,8 +62,8 @@
 
 .buttonsave{
    margin-top: 20px;
-   margin-left: 160%;
-   width: 30%;
+   margin-left: 45%;
+   width: 15%;
    height: 25px;
    color: rgb(255, 255, 255);
    border-radius: 6px;
@@ -102,10 +103,18 @@
 
 .maintable {
    margin-top: 40px;
+   
 }
 
 .td, th, tr{
      height: 40px;
-     width: 40px;
+     width: 120px;
      border-bottom: 1px solid #adadad;
+     /* max-height:  */
+     /* overflow-y: auto; */
+     overflow-x: auto;
+}
+
+.td{
+   width: 160px;
 }
