@@ -2,15 +2,18 @@
 import style from './style.module.css'
 
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+
 
 //exportação de função
 export function Form() {
-  const [formData, setFormData] = useState({ nome: '', });
+  const [formData, setFormData] = useState({ nome: '', sobrenome: '', telefone: '', });
   const [data, setData] = useState([]);
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
   const [telefone, setTelefone] = useState([0]);
+  const [usuarioId, setUsuarioId] = useState();
 
 
   //botão de salvar
@@ -18,29 +21,47 @@ export function Form() {
     fetch('http://localhost:3333/cadastro').then(response => response.json()).then(response => setData(response))
   };
 
-  const handleSubmit = (e) => {
+
+  const navigation = useNavigate()
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.nome || !formData.sobrenome || !formData.telefone) {
-      console.log(formData)
+    console.log(formData)
+    if (!formData.name || !formData.sobrenome || !formData.telefone) {
       toast.error('Preencha todos os dados abaixo')
       return
     }
 
-     fetch(`http://localhost:3333/cadastro`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'Application/json'
-      },
-      body: JSON.stringify( formData ({ nome, sobrenome, telefone })),
-    })
-    .then(() => {
-      getUsers()
-    })
+    try {
+      const response = await fetch('http://localhost:333/cadastro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setNome('');
-    setSobrenome('');
-    setTelefone('');
+      if (!response.ok) {
+        throw new Error('error ao salvar')
+      }
+
+      const result = await response.json();
+      console.log('dados salvos com sucesso', result)
+
+      await navigation();
+      await getUsers();
+
+      setNome('');
+      setSobrenome('');
+      setTelefone('');
+    } catch (error) {
+      console.error('Error', error)
+      toast.error('Ocorreu um erro ao salvar os dados')
+    }
+
   };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,15 +72,15 @@ export function Form() {
   };
 
 
-  function validarFormalario () {
-    const input = document.getElementById("campo1").value
+  // function validarFormalario () {
+  //   const input = document.getElementById("campo1").value
 
-    if (!input) {
-      alert('preencha os campos necessários.');
-      return false;
-    }
-    return true;
-  };
+  //   if (!input) {
+  //     alert('preencha os campos necessários.');
+  //     return false;
+  //   }
+  //   return true;
+  // };
 
   //função delete 
   const deleteUSer = async (id) => {
@@ -106,8 +127,6 @@ export function Form() {
         <button className={style.buttonsave} onClick={handleSubmit}>Salvar</button>
 
 
-
-
         <table className={style.maintable}>
           <tr>
             <th>ID</th>
@@ -133,6 +152,16 @@ export function Form() {
           </tbody>
         </thead>
       </div>
+
+      {
+        !!usuarioId && <div className={style.edites}>
+          <button>editar</button>
+
+        </div>
+      }
+
+
+
 
     </div>
 
