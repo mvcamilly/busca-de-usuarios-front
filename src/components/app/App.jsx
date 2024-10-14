@@ -8,7 +8,11 @@ import { toast } from 'sonner';
 
 //exportação de função
 export function Form() {
-  const [formData, setFormData] = useState({ nome: '', sobrenome: '', telefone: '', });
+  const [formData, setFormData] = useState({
+    nome: '',
+    sobrenome: '',
+    telefone: '',
+  });
   const [data, setData] = useState([]);
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
@@ -22,24 +26,45 @@ export function Form() {
   };
 
 
+  // function updateUsuarios(id) {
+  //   fetch(`http://local:3333/cadastro/${id}`), [
+
+  //   ]
+  // }
+
+
   const navigation = useNavigate()
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+
+  //função para input salvar e não salvar
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData)
     if (!formData.name || !formData.sobrenome || !formData.telefone) {
-      toast.error('Preencha todos os dados abaixo')
+      toast.error('Preencha todos os dados para prossegir.')
       return
     }
 
     try {
-      const response = await fetch('http://localhost:333/cadastro', {
+      const response = await fetch('http://localhost:3333/cadastro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          nome, 
+          telefone,
+          sobrenome,
+        }),
       });
 
       if (!response.ok) {
@@ -61,26 +86,6 @@ export function Form() {
     }
 
   };
-
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-
-  // function validarFormalario () {
-  //   const input = document.getElementById("campo1").value
-
-  //   if (!input) {
-  //     alert('preencha os campos necessários.');
-  //     return false;
-  //   }
-  //   return true;
-  // };
 
   //função delete 
   const deleteUSer = async (id) => {
@@ -135,31 +140,29 @@ export function Form() {
             <th>Telefone</th>
             <th>Ações</th>
           </tr>
+
+          <thead>
+            <tbody>
+              {data.map(item => {
+                return (
+                  <tr key={item.id}>
+                    <td className={style.td}>{item.id}</td>
+                    <td className={style.td}>{item.nome}</td>
+                    <td className={style.td}>{item.sobrenome}</td>
+                    <td className={style.td}>{item.telefone}</td>
+                    <td className={style.td}>{item.acoes}</td>
+                    <td>
+                      <button onClick={() => setUsuarioId(item.id)}>editar</button>
+                      <button type='button' onClick={() => deleteUSer(item.id)}>excluir</button>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+
+          </thead>
         </table>
-        <thead>
-          <tbody>
-            {data.map(item => {
-              return (
-                <tr key={item.id}>
-                  <td className={style.td}>{item.id}</td>
-                  <td className={style.td}>{item.nome}</td>
-                  <td className={style.td}>{item.sobrenome}</td>
-                  <td className={style.td}>{item.telefone}</td>
-                  <td className={style.td}>{item.acoes}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </thead>
       </div>
-
-      {
-        !!usuarioId && <div className={style.edites}>
-          <button>editar</button>
-
-        </div>
-      }
-
 
 
 
