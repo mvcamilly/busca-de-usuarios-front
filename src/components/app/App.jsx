@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
-
 //exportação de função
 export function Form() {
   const [formData, setFormData] = useState({
@@ -23,14 +22,10 @@ export function Form() {
   //botão de salvar
   function getUsers() {
     fetch('http://localhost:3333/cadastro').then(response => response.json()).then(response => setData(response))
-  };
+  }
 
 
-  // function updateUsuarios(id) {
-  //   fetch(`http://local:3333/cadastro/${id}`), [
 
-  //   ]
-  // }
 
 
   const navigation = useNavigate()
@@ -45,13 +40,12 @@ export function Form() {
 
 
   //função para input salvar e não salvar
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
-    if (!formData.name || !formData.sobrenome || !formData.telefone) {
+    console.log(nome, sobrenome, telefone)
+    if (!nome || !sobrenome || !telefone) {
       toast.error('Preencha todos os dados para prossegir.')
-      return
+      return 
     }
 
     try {
@@ -90,7 +84,7 @@ export function Form() {
   //função delete 
   const deleteUSer = async (id) => {
     console.log(id)
-    fetch(`http://localhosgt:3333/cadastro/${id}`, {
+    fetch(`http://localhost:3333/cadastro/${id}`, {
       method: 'DELETE',
     }).then(() => {
       getUsers()
@@ -133,6 +127,7 @@ export function Form() {
 
 
         <table className={style.maintable}>
+          <thead>
           <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -140,8 +135,7 @@ export function Form() {
             <th>Telefone</th>
             <th>Ações</th>
           </tr>
-
-          <thead>
+          </thead>
             <tbody>
               {data.map(item => {
                 return (
@@ -155,15 +149,12 @@ export function Form() {
                       <button onClick={() => setUsuarioId(item.id)}>editar</button>
                       <button type='button' onClick={() => deleteUSer(item.id)}>excluir</button>
                     </td>
-                  </tr>
+                  </tr>   
                 )
               })}
             </tbody>
-
-          </thead>
         </table>
-      </div>
-
+      </div> 
 
 
     </div>

@@ -5,11 +5,12 @@
 }
 
 .sidemenu {
-   background-color: rgb(227, 230, 231);
+   background-color: rgb(242, 245, 247);
    margin: 0;
    padding: 0%;
    width: 19%;
    height: 100%;
+   border-color: #9e9c9c;
 }
 
 .lateral {
@@ -35,7 +36,7 @@
 }
 
 .a:hover{
-   background-color: rgb(158, 175, 179);
+   background-color: rgb(195, 198, 198);
    cursor:pointer;
 }
 
@@ -53,6 +54,7 @@
    font-size: 30px;
    /* margin-top: 40px; */
 }
+
 .input{
    width: 60%;
    height: 25px;
@@ -94,7 +96,7 @@
 }
 
 .table {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #faf6f6;
 }
 
 .table {
@@ -109,7 +111,7 @@
 .td, th, tr{
      height: 40px;
      width: 120px;
-     border-bottom: 1px solid #adadad;
+     border-bottom: 1px solid #9e9c9c;
      /* max-height:  */
      /* overflow-y: auto; */
      overflow-x: auto;
