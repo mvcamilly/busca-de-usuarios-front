@@ -12,7 +12,7 @@ export function Header() {
     sobrenome: '',
     telefone: '',
   });
-
+  const [setAlert] = useState();
 
   const navigation = useNavigate()
 
@@ -28,13 +28,13 @@ export function Header() {
     e.preventDefault();
     if (!formData.nome || !formData.sobrenome || !formData.telefone) {
       console.log(formData)
-      // setAlert('Por Favor, preencha os dados necessários.')
+      setAlert('Por Favor, preencha os dados necessários.')
       toast.error('Preencha todos os dados para proseguir')
       return
     }
 
     try {
-      const response = await fetch('http://localhost:3333/cadastro', {
+      const response = await fetch('http://localhost:3333/head', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,13 +53,10 @@ export function Header() {
 
 
   return (
-    <div className={style.divv}>
+    <div className={style.div1}>
       <header className={style.cad}>
         <strong>
-          {/* <label className={style.cadastro}>CADASTRO
-            <a href="http://localhost:3000">/LISTAR</a></label> */}
-
-
+          {/* <label className={style.cadastro}>CADASTRO</label> */}
         </strong>
 
       </header>
@@ -72,12 +69,13 @@ export function Header() {
           onChange={handleChange} />
 
         <label className={style.name}>Sobrenome</label>
-        <input type="text" name="sobrenome" className={style.tab}
+        <input type="number" name="telefone" className={style.tab}
           onChange={handleChange} />
 
         <label className={style.name}>Telefone</label>
-        <input type="number" name="telefone" className={style.tab}
+        <input type="number" name="cpf" className={style.tab}
           onChange={handleChange} />
+
 
 
         <button type="button" name="name" className={style.OK} onClick={handleSubmit}>OK</button>

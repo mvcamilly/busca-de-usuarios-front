@@ -45,7 +45,7 @@ export function Form() {
     console.log(nome, sobrenome, telefone)
     if (!nome || !sobrenome || !telefone) {
       toast.error('Preencha todos os dados para prossegir.')
-      return 
+      return
     }
 
     try {
@@ -55,7 +55,7 @@ export function Form() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          nome, 
+          nome,
           telefone,
           sobrenome,
         }),
@@ -89,6 +89,8 @@ export function Form() {
     }).then(() => {
       getUsers()
     })
+    e.preventDefault();
+    
   }
 
   //rendederização de tabela
@@ -128,33 +130,32 @@ export function Form() {
 
         <table className={style.maintable}>
           <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Telefone</th>
-            <th>Ações</th>
-          </tr>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Sobrenome</th>
+              <th>Telefone</th>
+              <th>Ações</th>
+            </tr>
           </thead>
-            <tbody>
-              {data.map(item => {
-                return (
-                  <tr key={item.id}>
-                    <td className={style.td}>{item.id}</td>
-                    <td className={style.td}>{item.nome}</td>
-                    <td className={style.td}>{item.sobrenome}</td>
-                    <td className={style.td}>{item.telefone}</td>
-                    <td className={style.td}>{item.acoes}</td>
-                    <td>
-                      <button onClick={() => setUsuarioId(item.id)}>editar</button>
-                      <button type='button' onClick={() => deleteUSer(item.id)}>excluir</button>
-                    </td>
-                  </tr>   
-                )
-              })}
-            </tbody>
+          <tbody>
+            {data.map(item => {
+              return (
+                <tr key={item.id}>
+                  <td className={style.td}>{item.id}</td>
+                  <td className={style.td}>{item.nome}</td>
+                  <td className={style.td}>{item.sobrenome}</td>
+                  <td className={style.td}>{item.telefone}</td>
+                  <td className={style.td}>{item.acoes}
+                    <button onClick={() => setUsuarioId(item.id)} className={style.editebutton}>Editar</button>
+                    <button type='button' onClick={() => deleteUSer(item.id)} className={style.excluirbutton}>Excluir</button>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
         </table>
-      </div> 
+      </div>
 
 
     </div>
