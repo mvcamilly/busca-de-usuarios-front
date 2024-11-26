@@ -1,10 +1,10 @@
 import style from './style.module.css'
 
-function editar() { 
-    return(
-  
+function editar() {
+    return (
+
         <div>
-            <h2>editar dados do ususario</h2>
+            <title>editar dados do ususario</title>
 
             <label>nome</label>
             <input></input>
@@ -19,4 +19,4 @@ function editar() {
     )
 }
 
-export {editar}
+export { editar }

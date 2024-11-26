@@ -4,6 +4,7 @@ import style from './style.module.css'
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+// import {modal} from 'modaledit.jsx'
 
 //exportação de função
 export function Form() {
@@ -17,19 +18,19 @@ export function Form() {
   const [sobrenome, setSobrenome] = useState('');
   const [telefone, setTelefone] = useState([0]);
   const [usuarioId, setUsuarioId] = useState();
-
-
-  //botão de salvar
-  function getUsers() {
-    fetch('http://localhost:3333/cadastro').then(response => response.json()).then(response => setData(response))
-  }
-
-
-
-
+  const [isModalOpen, setIsModalOpen] = useState(false); //controle do modal 
 
   const navigation = useNavigate()
 
+  //função de buscar usuario
+  function getUsers() {
+    fetch('http://localhost:3333/cadastro')
+      .then(response => response.json())
+      .then(response => setData(response))
+  }
+
+
+  //função para constrolar inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -81,7 +82,8 @@ export function Form() {
 
   };
 
-  //função delete 
+
+  //função excluir usuario 
   const deleteUSer = async (id) => {
     console.log(id)
     fetch(`http://localhost:3333/cadastro/${id}`, {
@@ -89,9 +91,15 @@ export function Form() {
     }).then(() => {
       getUsers()
     })
-    e.preventDefault();
-    
   }
+
+
+  //função para abrir modal 
+  const openModal = () => setIsModalOpen(true)
+
+  //função fechar modal 
+  const closeModal = () => setIsModalOpen(false);
+
 
   //rendederização de tabela
   return (
@@ -111,27 +119,42 @@ export function Form() {
       </form>
 
       <div className={style.mainpanel}>
-        <label className={style.cadastre}>Cadastro de usuário</label>
-        {/* <input type='search' className={style.mainentrance}></input> */}
+        <strong>
+          <label className={style.cadastre}>Cadastro de usuário</label>
+        </strong>
+
         <div>
           <label className={style.name}>Nome:</label>
-          <input className={style.input} onChange={(e) => setNome(e.target.value)}></input>
+          <input
+            className={style.input}
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}>
+          </input>
         </div>
+
         <div>
           <label className={style.name}>Sobrenome:</label>
-          <input className={style.input} onChange={(e) => setSobrenome(e.target.value)}></input>
+          <input
+            className={style.input}
+            value={sobrenome}
+            onChange={(e) => setSobrenome(e.target.value)}>
+          </input>
         </div>
+
         <div>
           <label className={style.name}>Telefone:</label>
-          <input type='number' className={style.input} onChange={(e) => setTelefone(e.target.value)}></input>
+          <input
+            type='number'
+            className={style.input} value={telefone}
+            onChange={(e) => setTelefone(e.target.value)}>
+          </input>
         </div>
         <button className={style.buttonsave} onClick={handleSubmit}>Salvar</button>
-
 
         <table className={style.maintable}>
           <thead>
             <tr>
-              <th>ID</th>
+              <th className={style.id}>ID</th>
               <th>Nome</th>
               <th>Sobrenome</th>
               <th>Telefone</th>
@@ -147,8 +170,22 @@ export function Form() {
                   <td className={style.td}>{item.sobrenome}</td>
                   <td className={style.td}>{item.telefone}</td>
                   <td className={style.td}>{item.acoes}
-                    <button onClick={() => setUsuarioId(item.id)} className={style.editebutton}>Editar</button>
-                    <button type='button' onClick={() => deleteUSer(item.id)} className={style.excluirbutton}>Excluir</button>
+
+                    <button id='openModalBtn'
+                      className={style.editebutton}
+                      onClick={() => {
+                        setUsuarioId(item.id);
+                        openModal();
+                      }}
+                    >Editar
+                    </button>
+
+                    <button
+                      type='button'
+                      className={style.excluirbutton}
+                      onClick={() => deleteUSer(item.id)}
+                    >Excluir
+                    </button>
                   </td>
                 </tr>
               )
@@ -156,6 +193,37 @@ export function Form() {
           </tbody>
         </table>
       </div>
+
+      {/*modal de edição */}
+      {isModalOpen && (
+        <body>
+          <div className={style.modalOverLay}>
+          <div className={style.modalconteudo}>
+
+            <span id='closeModalBtn' onClick={closeModal}className={style.closeX}>
+              <i className='fas fa-times'></i>
+              &times;</span> {/*X fecha modal*/}
+
+            <h2>Preencha todos os dados para editar</h2>
+
+            <label className={style.modallabel}>Nome</label>
+            <input type='text' className={style.modalinput} />
+
+            <label className={style.modallabel}>Sobrenome</label>
+            <input type='text' className={style.modalinput}  />
+
+            <label className={style.modallabel}>Telefone</label>
+            <input type='number' className={style.modalinput} />
+            
+            <button>salvar</button>
+            <button onClick={closeModal}>cancelar</button> {/*apertar em cancelar também fecha o modal*/}
+          </div>
+          <div>
+           
+            </div>
+          </div>
+        </body>
+      )}
 
 
     </div>
