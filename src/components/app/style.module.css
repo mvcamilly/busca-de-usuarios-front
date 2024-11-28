@@ -1,6 +1,4 @@
 * {
-   /* margin: 0; */
-   /* padding: 0; */
    box-sizing: border-box;
 }
 
@@ -70,6 +68,7 @@
    color: rgb(255, 255, 255);
    border-radius: 6px;
    background-color: rgb(29, 29, 81);
+   border: none;
 }
 
 .buttonsave:hover{
@@ -96,7 +95,7 @@
 }
 
 .table {
-    border-bottom: 1px solid #faf6f6;
+   border-bottom: 1px solid #faf6f6;
 }
 
 .maintable {
@@ -105,16 +104,17 @@
 }
 
 .td, th, tr{
-     height: 40px;
-     width: 120px;
-     border-bottom: 1px solid #9e9c9c;
-     overflow-x: auto;
-     overflow: auto;
-     scroll-snap-type: x mandatory;
+   height: 40px;
+   width: 120px;
+   border-bottom: 1px solid #9e9c9c;
+   overflow-x: auto;
+   overflow: auto;
+   scroll-snap-type: x mandatory;
 }
 
 .td{
-   width: 160px;
+   width: 200px;
+   /* text-align: justify; */
 }
 
 .id{
@@ -129,10 +129,13 @@
    border-radius: 5px;
    cursor:pointer;
    outline: none;
-   /* border: 1px solid; */
-   width: 50px;
+   width: 60px;
    height: 20px;
-
+   border: none;
+}
+.editebutton:hover{
+   cursor: pointer;
+   background-color: rgb(26, 29, 126);
 }
 
 .excluirbutton{
@@ -140,10 +143,94 @@
    background-color: rgb(29, 29, 81);
    color: white;
    border-radius: 5px;
-   /* border: 1px solid; */
    cursor: pointer;
+   width: 60px;
+   height: 20px;
+   border: none;
 }
+.excluirbutton:hover{
+   cursor: pointer;
+   background-color: rgb(26, 29, 126);
+}
+
 .closeX:hover{
-   cursor: pointer;
+   cursor: pointer; 
+   width: 30px;
+   height: 10px;
 }
+
+.modalOverLay{
+   display: none; /* Inicialmente o modal está oculto */
+   position: fixed; /* Fixa a posição na tela */
+   top: 0;
+   left: 0;
+   width: 100%;  /* Ocupa toda a largura da tela */
+   height: 100%; /* Ocupa toda a altura da tela */
+   background-color: rgba(0, 0, 0, 0.8); /* Fundo preto com transparência (70%) */
+   z-index: 1; /* Garante que o modal ficará acima do conteúdo */
+   display: flex; /* Para usar o Flexbox para centralizar o conteúdo */
+   justify-content: end; /* Centraliza o conteúdo horizontalmente */
+   align-items: center;
+}
+.modalconteudo{
+   background-color: #fff; /* Cor de fundo do conteúdo do modal */
+   width: 30%; /* Largura do conteúdo do modal */
+   height: 750px;
+   max-width: 1100px; /* Largura máxima do conteúdo */
+}
+.h2{
+   margin-left: 10px;
+}
+
+.modallabel{
+   margin-left: 9px;
+   margin-top: 20px;
+}
+.modalinput{
+   width: 97%;
+   height: 25px;
+   border-radius: 5px;
+   border-color: rgb(209, 211, 212);
+   margin-left: 9px;
+   margin-top: 5px;
+
+}
+.buttonsalve{
+   margin-left: 20px;
+   margin-top: 20px;
+}
+.buttonsalve{
+   margin-left: 8px;
+   margin-top:30px;
+   background-color:  rgb(7, 7, 42);
+   color: white;
+   border-radius: 5px;
+   cursor:pointer;
+   outline: none;
+   width: 97%;
+   height: 25px;
+   border: none;
+   text-align: center;
+}
+.buttonsalve:hover {
+   cursor: pointer;
+   background-color: rgb(26, 29, 126);
+}
+.buttoncancel{
+   margin-left: 8px;
+   margin-top: 5px;
+   background-color:  rgb(9, 9, 45);
+   color: white;
+   border-radius: 5px;
+   cursor:pointer;
+   outline: none;
+   width: 97%;
+   height: 25px;
+   border: none;
+}
+.buttoncancel:hover{
+   cursor: pointer;
+   background-color: rgb(26, 29, 126);
+}
+
 

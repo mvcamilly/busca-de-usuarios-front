@@ -84,14 +84,31 @@ export function Form() {
 
 
   //função excluir usuario 
-  const deleteUSer = async (id) => {
-    console.log(id)
-    fetch(`http://localhost:3333/cadastro/${id}`, {
-      method: 'DELETE',
-    }).then(() => {
-      getUsers()
-    })
-  }
+  const deleteUser = async (id) => {
+    // Exibe a caixa de confirmação
+    const confirmDelete = window.confirm('Tem certeza que deseja excluir o usuário?');
+    if (confirmDelete) {
+      // Se o usuário confirmar a exclusão, realiza a requisição para excluir o usuário
+      try {
+        const response = await fetch(`http://localhost:3333/cadastro/${id}`, { method: 'DELETE' });
+        
+        // Verifica se a exclusão foi bem-sucedida
+        if (response.ok) {
+          toast.success('Usuário excluído com sucesso');
+          getUsers(); // Atualiza a lista de usuários após a exclusão
+          setUsuarioId(null); //limpa ID após exclusão 
+        } else {
+          toast.error('Ocorreu um erro ao excluir o usuário');
+        }
+      } catch (error) {
+        console.error('Erro ao excluir o usuário:', error);
+        toast.error('Erro ao excluir o usuário');
+      }
+    } else {
+      // Se o usuário cancelar, exibe a mensagem de que a exclusão foi cancelada
+      toast.info('Exclusão cancelada');
+    }
+  };
 
 
   //função para abrir modal 
@@ -183,7 +200,7 @@ export function Form() {
                     <button
                       type='button'
                       className={style.excluirbutton}
-                      onClick={() => deleteUSer(item.id)}
+                      onClick={() => deleteUser(item.id)}
                     >Excluir
                     </button>
                   </td>
@@ -198,28 +215,24 @@ export function Form() {
       {isModalOpen && (
         <body>
           <div className={style.modalOverLay}>
-          <div className={style.modalconteudo}>
+            <div className={style.modalconteudo}>
 
-            <span id='closeModalBtn' onClick={closeModal}className={style.closeX}>
-              <i className='fas fa-times'></i>
-              &times;</span> {/*X fecha modal*/}
+              <span id='closeModalBtn' onClick={closeModal} className={style.closeX}>
+                &times;</span> {/*X fecha modal*/}
 
-            <h2>Preencha todos os dados para editar</h2>
+              <h2 className={style.h2}>Edição de cadastros:</h2>
 
-            <label className={style.modallabel}>Nome</label>
-            <input type='text' className={style.modalinput} />
+              <label className={style.modallabel}>Nome:</label>
+              <input type="search" className={style.modalinput} />
 
-            <label className={style.modallabel}>Sobrenome</label>
-            <input type='text' className={style.modalinput}  />
+              <label className={style.modallabel}>Sobrenome:</label>
+              <input type='text' className={style.modalinput} />
 
-            <label className={style.modallabel}>Telefone</label>
-            <input type='number' className={style.modalinput} />
-            
-            <button>salvar</button>
-            <button onClick={closeModal}>cancelar</button> {/*apertar em cancelar também fecha o modal*/}
-          </div>
-          <div>
-           
+              <label className={style.modallabel}>Telefone:</label>
+              <input type='number' className={style.modalinput} />
+
+              <button className={style.buttonsalve}>Salvar</button>
+              <button onClick={closeModal} className={style.buttoncancel}>Cancelar</button> {/*apertar em cancelar também fecha o modal*/}
             </div>
           </div>
         </body>
