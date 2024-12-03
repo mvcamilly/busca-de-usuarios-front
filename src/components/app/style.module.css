@@ -50,7 +50,6 @@
 
 .cadastre {
    font-size: 30px;
-   /* margin-top: 40px; */
 }
 
 .input{
@@ -114,7 +113,6 @@
 
 .td{
    width: 200px;
-   /* text-align: justify; */
 }
 
 .id{
@@ -171,12 +169,14 @@
    display: flex; /* Para usar o Flexbox para centralizar o conteúdo */
    justify-content: end; /* Centraliza o conteúdo horizontalmente */
    align-items: center;
+   transition: right 0.s ease-in-out;
 }
 .modalconteudo{
    background-color: #fff; /* Cor de fundo do conteúdo do modal */
    width: 30%; /* Largura do conteúdo do modal */
    height: 750px;
    max-width: 1100px; /* Largura máxima do conteúdo */
+   
 }
 .h2{
    margin-left: 10px;
@@ -193,7 +193,6 @@
    border-color: rgb(209, 211, 212);
    margin-left: 9px;
    margin-top: 5px;
-
 }
 .buttonsalve{
    margin-left: 20px;

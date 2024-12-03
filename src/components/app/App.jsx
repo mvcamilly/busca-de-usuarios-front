@@ -1,10 +1,8 @@
-// import { useNavigate } from 'react-router-dom';
 import style from './style.module.css'
 
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-// import {modal} from 'modaledit.jsx'
 
 //exportação de função
 export function Form() {
@@ -83,6 +81,44 @@ export function Form() {
   };
 
 
+  //função de salvar modal e alterar na tabela 
+  const updateUser = async () => {
+    if (!nome || !sobrenome || !telefone) {
+      toast.error('Preencha todos os campos antes de salvar.');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:3333/cadastro/${usuarioId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome,
+          sobrenome,
+          telefone,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Erro ao atualizar os dados.');
+      }
+
+      const result = await response.json();
+      console.log('dados salvos com sucesso', result)
+  
+      toast.success('Dados atualizados com sucesso!');
+      closeModal(); // Fecha o modal
+      getUsers(); // Atualiza a tabela
+    } catch (error) {
+      // console.error('Erro ao atualizar:', error);
+      toast.error('Erro ao salvar as alterações.');
+    }
+  };
+  
+
+
   //função excluir usuario 
   const deleteUser = async (id) => {
     // Exibe a caixa de confirmação
@@ -90,8 +126,9 @@ export function Form() {
     if (confirmDelete) {
       // Se o usuário confirmar a exclusão, realiza a requisição para excluir o usuário
       try {
-        const response = await fetch(`http://localhost:3333/cadastro/${id}`, { method: 'DELETE' });
-        
+        const response = await fetch(`http://localhost:3333/cadastro/${id}`,
+          { method: 'DELETE' });
+
         // Verifica se a exclusão foi bem-sucedida
         if (response.ok) {
           toast.success('Usuário excluído com sucesso');
@@ -192,6 +229,9 @@ export function Form() {
                       className={style.editebutton}
                       onClick={() => {
                         setUsuarioId(item.id);
+                        setNome(item.nome);
+                        setSobrenome(item.sobrenome);
+                        setTelefone(item.telefone);
                         openModal();
                       }}
                     >Editar
@@ -223,7 +263,7 @@ export function Form() {
               <h2 className={style.h2}>Edição de cadastros:</h2>
 
               <label className={style.modallabel}>Nome:</label>
-              <input type="search" className={style.modalinput} />
+              <input type="text" className={style.modalinput} />
 
               <label className={style.modallabel}>Sobrenome:</label>
               <input type='text' className={style.modalinput} />
@@ -231,13 +271,12 @@ export function Form() {
               <label className={style.modallabel}>Telefone:</label>
               <input type='number' className={style.modalinput} />
 
-              <button className={style.buttonsalve}>Salvar</button>
+              <button className={style.buttonsalve} onClick={updateUser}>Salvar</button>
               <button onClick={closeModal} className={style.buttoncancel}>Cancelar</button> {/*apertar em cancelar também fecha o modal*/}
             </div>
           </div>
         </body>
       )}
-
 
     </div>
 

@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     background-color: rgba(235, 237, 238, 0.949);
-    /* padding: 1rem; */
     width: 17%;
 }
 
@@ -29,11 +28,9 @@
     height: 30px;
     text-decoration: none;
     background-color: rgba(235, 237, 238, 0.949);
-    /* border-color: black; */
     border-radius: 5px;
     margin-left: 18px;
     color:black;
-    /* background-color: rgb(3, 3, 42) */
 }
 
 .container> a:hover {
