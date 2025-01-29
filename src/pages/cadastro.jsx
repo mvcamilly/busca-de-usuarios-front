@@ -1,136 +1,101 @@
 import React, { useState, useEffect } from 'react';
-import style from './cadastro.module.css'
+import style from './cadastro.module.css';
 import { MenuLateral } from '../components/menu-lateral';
 import { TabelaRegistro } from '../components/tabela-registro';
 
-
-
 export function Form() {
+  const [usuarios, setUsuarios] = useState([]);
+  const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
-  const [newName, setnewName] = useState('');
-  const [password, setPassword] = useState('');
-  const [editData, setData] = useState([]);
-  const [usuarioId, setUsuarioID] = useState();
-  // const [item, setItem] = useState()
-  const [editId, setEditId] = useState(null)
-  const [editName, setEditName] = useState('')
-
-
-
+  const [senha, setSenha] = useState('');
+  const [editId, setEditId] = useState(null);
 
   useEffect(() => {
-    getUsers()
+    fetchUsuarios();
   }, []);
 
-  function getUsers() {
-    fetch('http://localhost:3333/usuarios').then(response => response.json()).then(response => setData(response))
-  };
+  async function fetchUsuarios() {
+    try {
+      const response = await fetch('http://localhost:3333/usuarios');
+      const data = await response.json();
+      setUsuarios(data || []);
+    } catch (error) {
+      console.error('Erro ao buscar usuários:', error);
+    }
+  }
 
-
-  // const hendleEdit = (id, nome) => {
-  //   setEditId(id);
-  //   setEditName(nome);
-  // };
-
-
-  const [name, setName] = useState('')
-
-
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    fetch(`http://localhost:3333/usuarios`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      body: JSON.stringify({ nome: name, cpf, password })
-    }).then(() => {
-      getUsers()
-    })
+    const method = editId ? 'PUT' : 'POST';
+    const url = editId ? `http://localhost:3333/usuarios/${editId}` : 'http://localhost:3333/usuarios';
 
-    setName('');
-    setCpf('');
-    setPassword('');
-  };
-
-
-  function updateUsuarios(id) {
-    fetch(`http://localhost:3333/usuarios/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': ''
-      },
-      body: JSON.stringify({
-        nome: newName,
-        cpf: cpf,
-
-      })
-    }).then(() => {
-      getUsers()
-      setUsuarioID()
-    })
+    try {
+      await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, cpf, senha })
+      });
+      fetchUsuarios();
+      setNome('');
+      setCpf('');
+      setSenha('');
+      setEditId(null);
+    } catch (error) {
+      console.error('Erro ao salvar usuário:', error);
+    }
   }
 
-  //função delete
-  const deleteUser = async (id) => {
-    console.log(id)
-    fetch(`http://localhost:3333/usuarios/${id}`, {
-      method: 'DELETE',
-    }).then(() => {
-      getUsers()
-    })
+  async function handleDelete(id) {
+    try {
+      await fetch(`http://localhost:3333/usuarios/${id}`, { method: 'DELETE' });
+      fetchUsuarios();
+    } catch (error) {
+      console.error('Erro ao excluir usuário:', error);
+    }
   }
 
+  function handleEdit(usuario) {
+    setEditId(usuario.id);
+    setNome(usuario.nome);
+    setCpf(usuario.cpf);
+    setSenha('');
+  }
 
   return (
     <div className={style.container}>
       <MenuLateral />
-
       <div className={style.content}>
-        <h1>Buscar Usuários</h1>
-
-        <input type="search" placeholder='Pesquisar usuário...' />
-
+        <h1>Cadastrar Usuários</h1>
         <form className={style.form} onSubmit={handleSubmit}>
           <div>
             <label>Nome:</label>
-            <input
-              type='text'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <input type='text' value={nome} onChange={(e) => setNome(e.target.value)} required />
           </div>
-          <div >
-            <label >CPF:</label>
+          <div>
+            <label>CPF:</label>
             <input
-              type="number"
+              type="text"
               value={cpf}
-              onChange={(e) => setCpf(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+                if (value.length <= 11) {
+                  setCpf(value);
+                }
+              }}
+              maxLength={11}
+              placeholder="Digite seu CPF"
             />
           </div>
           <div>
-            <label >Senha:</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <label>CNS:</label>
+            <input type='password' value={senha} onChange={(e) => setSenha(e.target.value)} required />
           </div>
-
-          <button type="submit" onClick={handleSubmit}>Salvar</button>
+          <button type='submit'>{editId ? 'Atualizar' : 'Salvar'}</button>
         </form>
-        <TabelaRegistro editData={editData} />
-
-
+        <TabelaRegistro usuarios={usuarios} onEdit={handleEdit} onDelete={handleDelete} />
       </div>
-
-      {
-        !!usuarioId && <div className='edição'>
-
-        </div>
-      }
     </div>
   );
-};
+}
 
 export default Form;

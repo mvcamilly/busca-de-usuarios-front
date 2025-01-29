@@ -1,122 +1,103 @@
-import { Component, Fragment, useEffect, useState, } from 'react';
-import style from './listuser.module.css'
+import { useEffect, useState } from 'react';
+import style from './listuser.module.css';
 
-//array com os passageiros falsos da API
 export function Table() {
   const [data, setData] = useState([]);
   const [newName, setNewName] = useState('');
-  const [usuarioId, setUsuarioId] = useState(0);
-  const [telefone, setNewTelefone] = useState(0);
-  const [cpf, setCpf] = useState('')
-  const [ibge, setIbge] = useState(0);
-  const [nextId, setNextId] = useState(1);
-  const [filterParam, setFIlterParam] = useState(['all']);
+  const [usuarioId, setUsuarioId] = useState(null);
+  const [telefone, setTelefone] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [ibge, setIbge] = useState('');
 
   useEffect(() => {
+    fetchUsers();
+  }, []);
 
-    fetch('http://localhost:3333/pessoas').then(response => response.json()).then(response => setData(response))
-
-  }, [])
-
-  function getUsers() {
-    fetch('http://localhost:3333/pessoas').then(response => response.json()).then(response => setData(response))
-    console.log('ativado')
+  async function fetchUsers() {
+    try {
+      const response = await fetch('http://localhost:3333/pessoas');
+      const result = await response.json();
+      setData(result);
+    } catch (error) {
+      console.error('Erro ao buscar usuários:', error);
+    }
   }
 
-  const [name, setName] = useState("")
-  async function executa() {
-    await fetch("http:/localhost:3333/pessoas", {
-      method: "PUT", body: JSON.stringify({ name })
-    })
+  async function updateUsuario(id) {
+    if (!newName || !telefone || !cpf || !ibge) {
+      alert('Preencha todos os campos antes de atualizar.');
+      return;
+    }
+
+    try {
+      await fetch(`http://localhost:3333/pessoas/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: newName, telefone, cpf, ibge }),
+      });
+      fetchUsers();
+      setUsuarioId(null);
+    } catch (error) {
+      console.error('Erro ao atualizar usuário:', error);
+    }
   }
 
-
-
-
-  //funções da tabela
-  function updateUsuarios(id) {
-    fetch(`http://localhost:3333/pessoas/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      body: JSON.stringify({
-        name: newName,
-        telefone: telefone,
-        cpf: cpf,
-        ibge: ibge,
-
-      })
-    }).then(() => {
-      getUsers()
-      setUsuarioId()
-    })
-
+  async function deleteUser(id) {
+    try {
+      await fetch(`http://localhost:3333/pessoas/${id}`, {
+        method: 'DELETE',
+      });
+      fetchUsers();
+    } catch (error) {
+      console.error('Erro ao deletar usuário:', error);
+    }
   }
 
-
-  function deleteUser(id) {
-
-    fetch(`http://localhost:3333/pessoas/${id}`, {
-      method: 'DELETE'
-    }).then(() => {
-      getUsers()
-    })
-  }
-
-  //redenderização de tabela
   return (
+    <div className={style.mainscreen}>
+      <aside className={style.sidemenu}>
+        <nav>
+          <a href="#" className={style.a}>Edição de usuário</a>
+          <a href="#" className={style.a}>Lista de cadastros</a>
+          <a href="#" className={style.a}>Registros de cadastros</a>
+        </nav>
+      </aside>
 
-    <div>
-       <div>
-            <label>Menu Lateral</label>
-            <input type='search' ></input>
-            <a href='http://localhost:3000/cadastro'>Lista de cadastro IBGE</a>
-            <a href='#'>2 botão de menu</a>
-            <a href='#'>3 botão de menu</a>
+      <main className={style.class}>
+        <h2 className={style.cadastre}>Pesquisa de Usuário</h2>
+        <div>
+          <input className={style.input} placeholder="Pesquisar..." />
+          <button className={style.pesquisar}>Pesquisar</button>
         </div>
-      <strong>
-        <label className={style.registro}>Buscar CID-10</label>
-        <input placeholder='Digite CID...' className={style.PESquisa}></input>
-       
-
-
-      </strong>
-
-      <table className={style.tabe}>
-        <thead className={style.TABELAMOVEL}>
-          <tr>
-            <th>ID</th>
-            <th className={style.tab}>Nome</th>
-            <th className={style.tab}>Telefone</th>
-            <th className={style.tab}>CPF</th>
-            <th className={style.tab}>IBGE</th>
-          </tr>
-
-
-
-        </thead>
-        <tbody>
-          {data.map(item => {
-            return (
-
-              <tr key={item.id}>
-                <td className={style.TD}>{item.id}</td>
-                <td className={style.TD}>{item.nome}</td>
-                <td className={style.TD}>{item.telefone}</td>
-                <td className={style.TD}>{item.cpf}</td>
-                <td className={style.TD}>{item.ibge}</td>
+        
+        <table className={style.meintable}>
+          <thead>
+            <tr>
+              <th className={style.thlistuser}>ID</th>
+              <th className={style.thlistuser}>Nome</th>
+              <th className={style.thlistuser}>Telefone</th>
+              <th className={style.thlistuser}>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map(user => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.telefone}</td>
+                <td>
+                  <button onClick={() => updateUsuario(user.id)}>Editar</button>
+                  <button onClick={() => deleteUser(user.id)}>Excluir</button>
+                </td>
               </tr>
-
-            );
-          })}
-        </tbody>
-      </table>
+            ))}
+          </tbody>
+        </table>
+      </main>
     </div>
-  )
-
-
+  );
 }
-
 
 export default Table;

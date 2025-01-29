@@ -14,19 +14,28 @@ export function Form() {
   const [data, setData] = useState([]);
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
-  const [telefone, setTelefone] = useState([0]);
+  const [telefone, setTelefone] = useState('');
   const [usuarioId, setUsuarioId] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false); //controle do modal 
+  const [correntUser, sitCurrentUser] = useState(null); //armazenar usuario para edição
 
   const navigation = useNavigate()
 
   //função de buscar usuario
-  function getUsers() {
+  const getUsers = () => {
     fetch('http://localhost:3333/cadastro')
-      .then(response => response.json())
-      .then(response => setData(response))
-  }
-
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao carregar os usuários.');
+        }
+        return response.json();
+      })
+      .then(users => setData(users))
+      .catch(error => {
+        console.error(error);
+        toast.error('Erro ao carregar a lista de usuários.');
+      });
+  };
 
   //função para constrolar inputs
   const handleChange = (e) => {
@@ -78,44 +87,59 @@ export function Form() {
       toast.error('Ocorreu um erro ao salvar os dados')
     }
 
-  };
+  }; 
 
 
   //função de salvar modal e alterar na tabela 
+  
   const updateUser = async () => {
-    if (!nome || !sobrenome || !telefone) {
+    // Validação dos campos
+    if (!nome.trim() || !sobrenome.trim() || !telefone.trim()) {
       toast.error('Preencha todos os campos antes de salvar.');
       return;
     }
   
     try {
+      // Requisição para atualizar o usuário
       const response = await fetch(`http://localhost:3333/cadastro/${usuarioId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          nome,
-          sobrenome,
-          telefone,
+          nome: nome.trim(),
+          sobrenome: sobrenome.trim(),
+          telefone: telefone.trim(),
         }),
       });
   
       if (!response.ok) {
-        throw new Error('Erro ao atualizar os dados.');
+        // Extrai mensagem de erro da API, se disponível
+        const errorData = await response.json();
+        throw new Error(errorData?.message || 'Erro ao atualizar os dados.');
       }
-
-      const result = await response.json();
-      console.log('dados salvos com sucesso', result)
   
+      // Processa a resposta
+      const updatedUser = await response.json();
+      console.log('Dados salvos com sucesso:', updatedUser);
+  
+      // Atualiza o estado local da tabela com o novo usuário
+      setData((prevData) =>
+        prevData.map((user) =>
+          user.id === usuarioId ? { ...user, nome, sobrenome, telefone } : user
+        )
+      );
+  
+      // Exibe feedback ao usuário
       toast.success('Dados atualizados com sucesso!');
+      setTimeout(() => toast.dismiss(), 3000);
       closeModal(); // Fecha o modal
-      getUsers(); // Atualiza a tabela
     } catch (error) {
-      // console.error('Erro ao atualizar:', error);
-      toast.error('Erro ao salvar as alterações.');
+      console.log('Erro ao atualizar os dados:', error);
+      toast.error(error.message || 'Erro ao salvar as alterações.');
     }
   };
+  
   
 
 
@@ -144,6 +168,7 @@ export function Form() {
     } else {
       // Se o usuário cancelar, exibe a mensagem de que a exclusão foi cancelada
       toast.info('Exclusão cancelada');
+      setTimeout(() => toast.dismiss(), 3000); //tempo de 3 segundos 
     }
   };
 
@@ -163,12 +188,11 @@ export function Form() {
 
         <div className={style.lateral}>
           <label className={style.label}>Menu Lateral</label>
-          <input type="search" className={style.sideentrance} value={formData.text} onChange={handleChange} />
         </div>
 
-        <a type='#' className={style.a}>Geral</a>
-        <a type='#' className={style.a}>Cadastros</a>
-        <a type='#' className={style.a}>Registros</a>
+        <a type='#' className={style.a}>Edição de usuários</a>
+        <a type='#' className={style.a}>Listas de Cadastros</a>
+        <a type='#' className={style.a}>Registros de cadastros</a>
 
       </form>
 
@@ -248,7 +272,7 @@ export function Form() {
               )
             })}
           </tbody>
-        </table>
+        </table> 
       </div>
 
       {/*modal de edição */}

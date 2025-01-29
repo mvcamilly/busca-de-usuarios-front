@@ -1,6 +1,6 @@
-* {
+/* * {
    box-sizing: border-box;
-}
+} */
 
 .sidemenu {
    background-color: rgb(242, 245, 247);
@@ -53,16 +53,16 @@
 }
 
 .input{
-   width: 40%;
-   height: 25px;
+   width: 300px;
+   /* height: 18px;z */
    border-radius: 5px;
    border-color: rgb(239, 240, 241);
 }
 
 .buttonsave{
    margin-top: 20px;
-   margin-left: 25%;
-   width: 15%;
+   margin-left: 238px;
+   width: 70px;
    height: 25px;
    color: rgb(255, 255, 255);
    border-radius: 6px;
