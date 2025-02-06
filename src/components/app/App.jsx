@@ -8,18 +8,23 @@ import { toast } from 'sonner';
 export function Form() {
   const [formData, setFormData] = useState({
     nome: '',
-    sobrenome: '',
+    cpf: '',
     telefone: '',
   });
   const [data, setData] = useState([]);
   const [nome, setNome] = useState('');
-  const [sobrenome, setSobrenome] = useState('');
+  const [cpf, setCpf] = useState('');
   const [telefone, setTelefone] = useState('');
   const [usuarioId, setUsuarioId] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false); //controle do modal 
   const [correntUser, sitCurrentUser] = useState(null); //armazenar usuario para edição
 
   const navigation = useNavigate()
+
+  // Carrega a lista de usuários automaticamente ao montar o componente (mostra a tabela em tela)
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   //função de buscar usuario
   const getUsers = () => {
@@ -37,21 +42,21 @@ export function Form() {
       });
   };
 
-  //função para constrolar inputs
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
+  //função para controlar inputs
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value
+  //   }));
+  // };
 
 
   //função para input salvar e não salvar
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(nome, sobrenome, telefone)
-    if (!nome || !sobrenome || !telefone) {
+    console.log(nome, cpf, telefone)
+    if (!nome || !cpf || !telefone) {
       toast.error('Preencha todos os dados para prossegir.')
       return
     }
@@ -64,10 +69,15 @@ export function Form() {
         },
         body: JSON.stringify({
           nome,
+          cpf,
           telefone,
-          sobrenome,
         }),
       });
+
+      if (telefone.length !== 11) {
+        toast.error('O telefone deve ter exatamente 11 dígitos.');
+        return;
+      }
 
       if (!response.ok) {
         throw new Error('error ao salvar')
@@ -80,7 +90,7 @@ export function Form() {
       await getUsers();
 
       setNome('');
-      setSobrenome('');
+      setCpf('');
       setTelefone('');
     } catch (error) {
       console.error('Error', error)
@@ -90,11 +100,12 @@ export function Form() {
   };
 
 
+
   //função de salvar modal e alterar na tabela 
 
   const updateUser = async () => {
     // Validação dos campos
-    if (!nome.trim() || !sobrenome.trim() || !telefone.trim()) {
+    if (!nome.trim() || !cpf.trim() || !telefone.trim()) {
       toast.error('Preencha todos os campos antes de salvar.');
       return;
     }
@@ -108,7 +119,7 @@ export function Form() {
         },
         body: JSON.stringify({
           nome: nome.trim(),
-          sobrenome: sobrenome.trim(),
+          cpf: cpf.trim(),
           telefone: telefone.trim(),
         }),
       });
@@ -126,7 +137,7 @@ export function Form() {
       // Atualiza o estado local da tabela com o novo usuário
       setData((prevData) =>
         prevData.map((user) =>
-          user.id === usuarioId ? { ...user, nome, sobrenome, telefone } : user
+          user.id === usuarioId ? { ...user, nome, cpf, telefone } : user
         )
       );
 
@@ -211,21 +222,33 @@ export function Form() {
         </div>
 
         <div>
-          <label className={style.name}>Sobrenome:</label>
+          <label className={style.name}>CPF</label>
           <input
+            type='number'
             className={style.input}
-            value={sobrenome}
-            onChange={(e) => setSobrenome(e.target.value)}>
-          </input>
+            value={cpf}
+            onChange={(e => {
+              const value = e.target.value.replace(/\D/g, ''); // remover caracteres não numericos 
+              if (value.length <= 11) {
+                setCpf(value); // 11 dígitos
+              }
+            })}
+          />
         </div>
 
         <div>
           <label className={style.name}>Telefone:</label>
           <input
-            type='number'
-            className={style.input} value={telefone}
-            onChange={(e) => setTelefone(e.target.value)}>
-          </input>
+            type="number"
+            className={style.input}
+            value={telefone}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+              if (value.length <= 11) {
+                setTelefone(value); // Apenas 11 dígitos
+              }
+            }}
+          />
         </div>
         <button className={style.buttonsave} onClick={handleSubmit}>Salvar</button>
 
@@ -234,7 +257,7 @@ export function Form() {
             <tr>
               <th className={style.id}>ID</th>
               <th>Nome</th>
-              <th>Sobrenome</th>
+              <th>CPF</th>
               <th>Telefone</th>
               <th>Ações</th>
             </tr>
@@ -245,7 +268,7 @@ export function Form() {
                 <tr key={item.id}>
                   <td className={style.td}>{item.id}</td>
                   <td className={style.td}>{item.nome}</td>
-                  <td className={style.td}>{item.sobrenome}</td>
+                  <td className={style.td}>{item.cpf}</td>
                   <td className={style.td}>{item.telefone}</td>
                   <td className={style.td}>{item.acoes}
 
@@ -254,7 +277,7 @@ export function Form() {
                       onClick={() => {
                         setUsuarioId(item.id);
                         setNome(item.nome);
-                        setSobrenome(item.sobrenome);
+                        setCpf(item.cpf);
                         setTelefone(item.telefone);
                         openModal();
                       }}
@@ -292,7 +315,7 @@ export function Form() {
               </div>
 
               <div className={style.modalGroup}>
-                <label className={style.modalLabel}>Sobrenome:</label>
+                <label className={style.modalLabel}>CPF:</label>
                 <input type="text" className={style.modalInput} />
               </div>
 
