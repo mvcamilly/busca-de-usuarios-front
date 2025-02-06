@@ -31,7 +31,7 @@
     border-radius: 5px;
     margin-left: 18px;
     color:black;
-}
+} 
 
 .container> a:hover {
     background-color: rgba(85, 89, 151, 0.61); /*blue*/

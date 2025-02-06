@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from '../components/app/App';
 import Header from '../components/head/head';
 import Listuser from '../listuser';
-import Pagescad from '../pages/pages.cad';
+// import Pagescad from '../pages/pages.cad';
 import Cadastro from '../pages/cadastro';
 
 function AppRoutes() {
@@ -13,7 +13,7 @@ function AppRoutes() {
                 <Route path="/" element={<App />} />
                 <Route path="/head" element={<Header />} />
                 <Route path="/listuser" element={<Listuser />} />
-                <Route path="/pagescad" element={<Pagescad />} />
+                {/* <Route path="/pagescad" element={<Pagescad />} /> */}
                 <Route path="/cadastro" element={<Cadastro />} />
 
             </Routes>

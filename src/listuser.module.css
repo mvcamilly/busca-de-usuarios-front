@@ -46,27 +46,10 @@
 }
 .pesquisar{
      margin-left: 147px;
-}
-.meintable{
-     margin-top: 50px;
-}
-  
+} 
 .pag {
      background-color: rgb(0, 0, 0);
 
-}
-.tr{
-     border: 1px solid black;
-}
-.th {
-
-     background-color: rgb(255, 255, 255);
-     width: 0px;
-     height: 0px;
-     padding: auto;
-     margin-left: 400px;
-     margin: center;
-     border: 1px solid black;
 }
 
 .dvi {
@@ -144,48 +127,6 @@ tr:hover {
      border: none;
      font-family: Inter;
 }
-
-/* .salvar {
-
-     background-color: rgb(15, 15, 44);
-     color: aliceblue;
-     margin-top: 50px;
-     cursor: pointer;
-     width: 20%;
-     height: 28px;
-     border: none;
-     border-radius: 5px;
-     margin-left: 190px;
-     color: #ffffff;
-     text-decoration: none;
-     font-family: Inter;
-} */
-
-/* .deletar {
-     background-color: rgb(15, 15, 44);
-     margin-top: 5px;
-     margin-left: 20px;
-     width: 80px;
-     height: 25px;
-     cursor: pointer;
-     border-radius: 5px;
-     border: none;
-     color: white;
-     font-family: Inter;
-
-} */
-
-/* .edite {
-     background-color: rgba(0, 0, 0, 0.8);
-     position: fixed;
-     top: 0;
-     right: 0;
-     left: 0;
-     bottom: 0;
-     text-align: center;
-     font-family: Inter;
-
-} */
 
 .nomestabela {
      margin-left: 20%;
@@ -270,27 +211,6 @@ tr:hover {
      top: 0;
 }
 
-/* .buttonMenu {
-     margin-top: 20px;
-     margin-left: 20px;
-     width: 215px;
-     height: 20%;
-     background-color: rgb(3, 3, 42);
-     color: aliceblue;
-     border-radius: 5px;
-
-     background-color: rgb(236, 236, 236);
-     text-align: justify;
-     color: black;
-     border: none;
-     font-family: Inter;
-
-
-} */
-
-/* .buttonMenu:hover {
-     background-color: #8695ad;
-} */
 
 .pesqMENU {
      margin-top: 20px;

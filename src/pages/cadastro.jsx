@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import style from './cadastro.module.css';
-import { MenuLateral } from '../components/menu-lateral';
-import { TabelaRegistro } from '../components/tabela-registro';
+import style from './sidebar.module.css';
+// import { MenuLateral } from './menu-lateral';
+// import { TabelaRegistro } from '../components/pages';
 
 export function Form() {
   const [usuarios, setUsuarios] = useState([]);
@@ -62,37 +62,32 @@ export function Form() {
   }
 
   return (
-    <div className={style.container}>
-      <MenuLateral />
-      <div className={style.content}>
-        <h1>Cadastrar Usuários</h1>
-        <form className={style.form} onSubmit={handleSubmit}>
-          <div>
-            <label>Nome:</label>
-            <input type='text' value={nome} onChange={(e) => setNome(e.target.value)} required />
-          </div>
-          <div>
-            <label>CPF:</label>
-            <input
-              type="text"
-              value={cpf}
-              onChange={(e) => {
-                const value = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-                if (value.length <= 11) {
-                  setCpf(value);
-                }
-              }}
-              maxLength={11}
-              placeholder="Digite seu CPF"
-            />
-          </div>
-          <div>
-            <label>CNS:</label>
-            <input type='password' value={senha} onChange={(e) => setSenha(e.target.value)} required />
-          </div>
-          <button type='submit'>{editId ? 'Atualizar' : 'Salvar'}</button>
-        </form>
-        <TabelaRegistro usuarios={usuarios} onEdit={handleEdit} onDelete={handleDelete} />
+    <div className={style.diver}>
+      <form onSubmit={handleSubmit} className={style.menu} id="menu" >
+
+        <div className={style.ltr}>
+          <label className={style.mn}>Menu Lateral</label>
+        </div>
+
+        <a href='http://localhost:3000/' className={style.k}>voltar</a>
+        <a type='#' className={style.k}>Edição de Cadastro</a>
+        <a type='#' className={style.k}>Registros de cadastros</a>
+
+      </form>
+      <div className={style.container}>
+        <div className={style.content}>
+          <h1>Lista de Usuários</h1>
+          <form className={style.form} onSubmit={handleSubmit}>
+            <div>
+              <label>Nome:</label>
+              <input type='text' value={nome} onChange={(e) => setNome(e.target.value)} required
+                placeholder='DIgite seu nome ou CPF'
+              />
+            </div>
+            <button type='submit'>{editId ? 'Atualizar' : 'Salvar'}</button>
+          </form>
+
+        </div>
       </div>
     </div>
   );

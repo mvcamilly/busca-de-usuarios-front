@@ -87,18 +87,18 @@ export function Form() {
       toast.error('Ocorreu um erro ao salvar os dados')
     }
 
-  }; 
+  };
 
 
   //função de salvar modal e alterar na tabela 
-  
+
   const updateUser = async () => {
     // Validação dos campos
     if (!nome.trim() || !sobrenome.trim() || !telefone.trim()) {
       toast.error('Preencha todos os campos antes de salvar.');
       return;
     }
-  
+
     try {
       // Requisição para atualizar o usuário
       const response = await fetch(`http://localhost:3333/cadastro/${usuarioId}`, {
@@ -112,24 +112,24 @@ export function Form() {
           telefone: telefone.trim(),
         }),
       });
-  
+
       if (!response.ok) {
         // Extrai mensagem de erro da API, se disponível
         const errorData = await response.json();
         throw new Error(errorData?.message || 'Erro ao atualizar os dados.');
       }
-  
+
       // Processa a resposta
       const updatedUser = await response.json();
       console.log('Dados salvos com sucesso:', updatedUser);
-  
+
       // Atualiza o estado local da tabela com o novo usuário
       setData((prevData) =>
         prevData.map((user) =>
           user.id === usuarioId ? { ...user, nome, sobrenome, telefone } : user
         )
       );
-  
+
       // Exibe feedback ao usuário
       toast.success('Dados atualizados com sucesso!');
       setTimeout(() => toast.dismiss(), 3000);
@@ -139,8 +139,8 @@ export function Form() {
       toast.error(error.message || 'Erro ao salvar as alterações.');
     }
   };
-  
-  
+
+
 
 
   //função excluir usuario 
@@ -190,8 +190,8 @@ export function Form() {
           <label className={style.label}>Menu Lateral</label>
         </div>
 
-        <a type='#' className={style.a}>Edição de usuários</a>
-        <a type='#' className={style.a}>Listas de Cadastros</a>
+        <a href='http://localhost:3000/cadastro' className={style.a}>Lista de Cadastro</a>
+        <a type='#' className={style.a}>Edição de Cadastro</a>
         <a type='#' className={style.a}>Registros de cadastros</a>
 
       </form>
@@ -272,35 +272,50 @@ export function Form() {
               )
             })}
           </tbody>
-        </table> 
+        </table>
       </div>
 
-      {/*modal de edição */}
+      {/* Modal de edição */}
       {isModalOpen && (
-        <body>
-          <div className={style.modalOverLay}>
-            <div className={style.modalconteudo}>
+        <div className={style.modalOverLay}>
+          <div className={style.modalConteudo}>
 
-              <span id='closeModalBtn' onClick={closeModal} className={style.closeX}>
-                &times;</span> {/*X fecha modal*/}
+            {/* Botão para fechar o modal */}
+            <span onClick={closeModal} className={style.closeX}>&times;</span>
 
-              <h2 className={style.h2}>Edição de cadastros:</h2>
+            <h2 className={style.h2}>Edição de Cadastros</h2>
 
-              <label className={style.modallabel}>Nome:</label>
-              <input type="text" className={style.modalinput} />
+            <form>
+              <div className={style.modalGroup}>
+                <label className={style.modalLabel}>Nome:</label>
+                <input type="text" className={style.modalInput} />
+              </div>
 
-              <label className={style.modallabel}>Sobrenome:</label>
-              <input type='text' className={style.modalinput} />
+              <div className={style.modalGroup}>
+                <label className={style.modalLabel}>Sobrenome:</label>
+                <input type="text" className={style.modalInput} />
+              </div>
 
-              <label className={style.modallabel}>Telefone:</label>
-              <input type='number' className={style.modalinput} />
+              <div className={style.modalGroup}>
+                <label className={style.modalLabel}>Telefone:</label>
+                <input type="number" className={style.modalInput} />
+              </div>
 
-              <button className={style.buttonsalve} onClick={updateUser}>Salvar</button>
-              <button onClick={closeModal} className={style.buttoncancel}>Cancelar</button> {/*apertar em cancelar também fecha o modal*/}
-            </div>
+              {/* Botões de ação */}
+              <div className={style.modalActions}>
+                <button type="button" className={style.buttonSave} onClick={updateUser}>
+                  Salvar
+                </button>
+                <button type="button" className={style.buttonCancel} onClick={closeModal}>
+                  Cancelar
+                </button>
+              </div>
+            </form>
+
           </div>
-        </body>
+        </div>
       )}
+
 
     </div>
 
