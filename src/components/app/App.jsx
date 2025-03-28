@@ -8,16 +8,14 @@ import { toast } from 'sonner';
 export function Form() {
   const [formData, setFormData] = useState({
     nome: '',
-    cpf: '',
-    telefone: '',
   });
   const [data, setData] = useState([]);
   const [nome, setNome] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [telefone, setTelefone] = useState('');
+  // const [cpf, setCpf] = useState('');
+  // const [telefone, setTelefone] = useState('');
   const [usuarioId, setUsuarioId] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false); //controle do modal 
-  const [correntUser, sitCurrentUser] = useState(null); //armazenar usuario para edição
+  // const [correntUser, sitCurrentUser] = useState(null); //armazenar usuario para edição
 
   const navigation = useNavigate()
 
@@ -55,8 +53,8 @@ export function Form() {
   //função para input salvar e não salvar
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(nome, cpf, telefone)
-    if (!nome || !cpf || !telefone) {
+    console.log(nome, )
+    if (!nome) {
       toast.error('Preencha todos os dados para prossegir.')
       return
     }
@@ -69,16 +67,8 @@ export function Form() {
         },
         body: JSON.stringify({
           nome,
-          cpf,
-          telefone,
         }),
       });
-
-      if (telefone.length !== 11) {
-        toast.error('O telefone deve ter exatamente 11 dígitos.');
-        return;
-      }
-
       if (!response.ok) {
         throw new Error('error ao salvar')
       }
@@ -90,8 +80,6 @@ export function Form() {
       await getUsers();
 
       setNome('');
-      setCpf('');
-      setTelefone('');
     } catch (error) {
       console.error('Error', error)
       toast.error('Ocorreu um erro ao salvar os dados')
@@ -105,22 +93,20 @@ export function Form() {
 
   const updateUser = async () => {
     // Validação dos campos
-    if (!nome.trim() || !cpf.trim() || !telefone.trim()) {
+    if (!nome.trim()) {
       toast.error('Preencha todos os campos antes de salvar.');
       return;
     }
 
     try {
       // Requisição para atualizar o usuário
-      const response = await fetch(`http://localhost:3333/cadastro/${usuarioId}`, {
+      const response = await fetch(`http://localhost:3333/usuarios/${usuarioId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           nome: nome.trim(),
-          cpf: cpf.trim(),
-          telefone: telefone.trim(),
         }),
       });
 
@@ -137,7 +123,7 @@ export function Form() {
       // Atualiza o estado local da tabela com o novo usuário
       setData((prevData) =>
         prevData.map((user) =>
-          user.id === usuarioId ? { ...user, nome, cpf, telefone } : user
+          user.id === usuarioId ? { ...user, nome, } : user
         )
       );
 
@@ -221,35 +207,6 @@ export function Form() {
           </input>
         </div>
 
-        <div>
-          <label className={style.name}>CPF</label>
-          <input
-            type='number'
-            className={style.input}
-            value={cpf}
-            onChange={(e => {
-              const value = e.target.value.replace(/\D/g, ''); // remover caracteres não numericos 
-              if (value.length <= 11) {
-                setCpf(value); // 11 dígitos
-              }
-            })}
-          />
-        </div>
-
-        <div>
-          <label className={style.name}>Telefone:</label>
-          <input
-            type="number"
-            className={style.input}
-            value={telefone}
-            onChange={(e) => {
-              const value = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-              if (value.length <= 11) {
-                setTelefone(value); // Apenas 11 dígitos
-              }
-            }}
-          />
-        </div>
         <button className={style.buttonsave} onClick={handleSubmit}>Salvar</button>
 
         <table className={style.maintable}>
@@ -257,8 +214,6 @@ export function Form() {
             <tr>
               <th className={style.id}>ID</th>
               <th>Nome</th>
-              <th>CPF</th>
-              <th>Telefone</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -268,8 +223,6 @@ export function Form() {
                 <tr key={item.id}>
                   <td className={style.td}>{item.id}</td>
                   <td className={style.td}>{item.nome}</td>
-                  <td className={style.td}>{item.cpf}</td>
-                  <td className={style.td}>{item.telefone}</td>
                   <td className={style.td}>{item.acoes}
 
                     <button id='openModalBtn'
@@ -277,8 +230,6 @@ export function Form() {
                       onClick={() => {
                         setUsuarioId(item.id);
                         setNome(item.nome);
-                        setCpf(item.cpf);
-                        setTelefone(item.telefone);
                         openModal();
                       }}
                     >Editar
@@ -312,16 +263,6 @@ export function Form() {
               <div className={style.modalGroup}>
                 <label className={style.modalLabel}>Nome:</label>
                 <input type="text" className={style.modalInput} />
-              </div>
-
-              <div className={style.modalGroup}>
-                <label className={style.modalLabel}>CPF:</label>
-                <input type="text" className={style.modalInput} />
-              </div>
-
-              <div className={style.modalGroup}>
-                <label className={style.modalLabel}>Telefone:</label>
-                <input type="number" className={style.modalInput} />
               </div>
 
               {/* Botões de ação */}
