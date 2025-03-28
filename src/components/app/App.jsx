@@ -53,7 +53,7 @@ export function Form() {
   //função para input salvar e não salvar
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(nome, )
+    console.log(nome,)
     if (!nome) {
       toast.error('Preencha todos os dados para prossegir.')
       return
@@ -191,24 +191,24 @@ export function Form() {
         <a type='#' className={style.a}>Edição de Cadastro</a>
         <a type='#' className={style.a}>Registros de cadastros</a>
 
+        <button className={style.desconect}>DESCONECTAR</button>
+
       </form>
 
       <div className={style.mainpanel}>
+        <p>Cadastro de usuário</p>
         <strong>
           <label className={style.cadastre}>Cadastro de usuário</label>
         </strong>
-
         <div>
-          <label className={style.name}>Nome:</label>
           <input
             className={style.input}
             value={nome}
             onChange={(e) => setNome(e.target.value)}>
+
           </input>
+          <button className={style.buttonsave} onClick={handleSubmit}>Salvar</button>
         </div>
-
-        <button className={style.buttonsave} onClick={handleSubmit}>Salvar</button>
-
         <table className={style.maintable}>
           <thead>
             <tr>

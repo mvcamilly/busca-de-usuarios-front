@@ -23,19 +23,19 @@
    margin-left: 30px;
 }
 
-.a{
-   display: flex; 
+.a {
+   display: flex;
    margin-top: 30px;
    margin-left: 10%;
    width: 70%;
    height: 30px;
    border-radius: 5px;
-   
+
 }
 
-.a:hover{
+.a:hover {
    background-color: rgb(195, 198, 198);
-   cursor:pointer;
+   cursor: pointer;
 }
 
 .mainscreen {
@@ -46,33 +46,35 @@
 
 .mainpanel {
    margin-left: 4%;
+   margin-top: 60px;
 }
 
 .cadastre {
-   font-size: 30px;
+   font-size: 25px;
 }
 
-.input{
+.input {
    width: 300px;
-   /* height: 18px;z */
    border-radius: 5px;
    border-color: rgb(239, 240, 241);
+   margin-top: 20px;
+   height: 25px;
 }
 
-.buttonsave{
-   margin-top: 20px;
-   margin-left: 238px;
+.buttonsave {
+   /* margin-top: px; */
+   margin-left: 320px;
    width: 70px;
    height: 25px;
    color: rgb(255, 255, 255);
    border-radius: 6px;
-   background-color: rgb(29, 29, 81);
+   background-color: rgb(70, 70, 196);
    border: none;
 }
 
-.buttonsave:hover{
+.buttonsave:hover {
    cursor: pointer;
-   background-color: rgb(26, 29, 126);
+   background-color: rgb(70, 70, 196);
 }
 
 .mainentrance {
@@ -98,47 +100,52 @@
 }
 
 .maintable {
-   margin-top: 40px;
-   
+   margin-top: 15px;
+
 }
 
-.td, th, tr{
-   height: 40px;
-   width: 120px;
+.td,
+th,
+tr {
+   height: 50px;
+   width: 300px;
    border-bottom: 1px solid #9e9c9c;
    overflow-x: auto;
    overflow: auto;
    scroll-snap-type: x mandatory;
+   text-align: justify;
 }
 
-.td{
+.td {
    width: 200px;
 }
 
-.id{
+.id {
    width: 1px;
    height: 20px;
+   text-align: justify;
 }
 
-.editebutton{
+.editebutton {
    margin-left: 30px;
-   background-color:  rgb(29, 29, 81);
+   background-color: rgb(70, 70, 196);
    color: white;
    border-radius: 5px;
-   cursor:pointer;
+   cursor: pointer;
    outline: none;
    width: 60px;
    height: 20px;
    border: none;
 }
-.editebutton:hover{
+
+.editebutton:hover {
    cursor: pointer;
-   background-color: rgb(26, 29, 126);
+   background-color: rgb(70, 70, 196);
 }
 
-.excluirbutton{
+.excluirbutton {
    margin-left: 10px;
-   background-color: rgb(29, 29, 81);
+   background-color: rgb(70, 70, 196);
    color: white;
    border-radius: 5px;
    cursor: pointer;
@@ -146,60 +153,96 @@
    height: 20px;
    border: none;
 }
-.excluirbutton:hover{
+
+.excluirbutton:hover {
    cursor: pointer;
-   background-color: rgb(26, 29, 126);
+   background-color: rgb(70, 70, 196);
 }
 
-.closeX:hover{
-   cursor: pointer; 
+.closeX:hover {
+   cursor: pointer;
    width: 30px;
    height: 10px;
 }
 
-.modalOverLay{
-   display: none; /* Inicialmente o modal está oculto */
-   position: fixed; /* Fixa a posição na tela */
+.modalOverLay {
+   display: none;
+   /* Inicialmente o modal está oculto */
+   position: fixed;
+   /* Fixa a posição na tela */
    top: 0;
    left: 0;
-   width: 100%;  /* Ocupa toda a largura da tela */
-   height: 100%; /* Ocupa toda a altura da tela */
-   background-color: rgba(0, 0, 0, 0.8); /* Fundo preto com transparência (70%) */
-   z-index: 1; /* Garante que o modal ficará acima do conteúdo */
-   display: flex; /* Para usar o Flexbox para centralizar o conteúdo */
-   justify-content: end; /* Centraliza o conteúdo horizontalmente */
+   width: 100%;
+   /* Ocupa toda a largura da tela */
+   height: 100%;
+   /* Ocupa toda a altura da tela */
+   background-color: rgba(0, 0, 0, 0.8);
+   /* Fundo preto com transparência (70%) */
+   z-index: 1;
+   /* Garante que o modal ficará acima do conteúdo */
+   display: flex;
+   /* Para usar o Flexbox para centralizar o conteúdo */
+   justify-content: end;
+   /* Centraliza o conteúdo horizontalmente */
    align-items: center;
    transition: right 0.s ease-in-out;
 }
-.modalconteudo{
-   background-color: #fff; /* Cor de fundo do conteúdo do modal */
-   width: 30%; /* Largura do conteúdo do modal */
+
+.modalconteudo {
+   background-color: #fff;
+   /* Cor de fundo do conteúdo do modal */
+   width: 30%;
+   /* Largura do conteúdo do modal */
    height: 750px;
-   max-width: 1100px; /* Largura máxima do conteúdo */
-   
+   max-width: 1100px;
+   /* Largura máxima do conteúdo */
+
 }
-.h2{
+
+.h2 {
    margin-left: 10px;
 }
 
 .modalConteudo {
-   background-color: white; /* Fundo branco */
+   background-color: white;
+   /* Fundo branco */
    padding: 20px;
-   border-radius: 8px; /* Cantos arredondados */
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
-   max-width: 500px;
-   width: 100%;
+   border-radius: 8px;
+   /* Cantos arredondados */
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   /* Sombra leve */
+   max-width: 400px;
+   width: 30%;
    margin: center;
- }
- .modalOverLay {
+}
+
+.modalOverLay {
    position: fixed;
    top: 0;
    left: 0;
    width: 100%;
    height: 100%;
-   background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semitransparente */
+   background-color: rgba(0, 0, 0, 0.5);
+   /* Fundo escuro semitransparente */
    display: flex;
    justify-content: center;
    align-items: center;
- }
+}
 
+.buttonsave {}
+
+.desconect {
+   margin-top: 450px;
+   margin-left: 30px;
+   background-color: #f8f8f8;
+   /* Fundo claro */
+   color: rgb(232, 155, 155);
+   /* Texto vermelho */
+   border: 1px solid rgb(220, 214, 214);
+   /* Borda vermelha */
+   padding: 8px 12px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold;
+   width: 80%;
+}
