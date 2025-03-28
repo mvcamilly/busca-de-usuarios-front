@@ -191,7 +191,7 @@ export function Form() {
         <a type='#' className={style.a}>Edição de Cadastro</a>
         <a type='#' className={style.a}>Registros de cadastros</a>
 
-        <button className={style.desconect}>DESCONECTAR</button>
+        <button className={style.desconect}>Desconectar</button>
 
       </form>
 

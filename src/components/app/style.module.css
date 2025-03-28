@@ -229,14 +229,13 @@ tr {
    align-items: center;
 }
 
-.buttonsave {}
 
 .desconect {
    margin-top: 450px;
    margin-left: 30px;
    background-color: #f8f8f8;
    /* Fundo claro */
-   color: rgb(232, 155, 155);
+   color: rgb(240, 107, 107);
    /* Texto vermelho */
    border: 1px solid rgb(220, 214, 214);
    /* Borda vermelha */
@@ -245,4 +244,8 @@ tr {
    cursor: pointer;
    font-weight: bold;
    width: 80%;
+   font-size: 14px;
 }
+.desconect:hover {
+   background-color: #eae3e3; /* Leve tom de vermelho no hover */
+ }
