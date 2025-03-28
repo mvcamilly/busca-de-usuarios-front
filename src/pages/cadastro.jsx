@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import style from './sidebar.module.css';
-// import { MenuLateral } from './menu-lateral';
-// import { TabelaRegistro } from '../components/pages';
 
 export function Form() {
   const [usuarios, setUsuarios] = useState([]);
@@ -24,10 +22,11 @@ export function Form() {
     }
   }
 
+  //criar uma tabela caso não exista 
   async function handleSubmit(e) {
     e.preventDefault();
     const method = editId ? 'PUT' : 'POST';
-    const url = editId ? `http://localhost:3333/usuarios/${editId}` : 'http://localhost:3333/usuarios';
+    const url = editId ? `http://localhost:3333/cadastro/${editId}` : 'http://localhost:3333/usuarios';
 
     try {
       await fetch(url, {
@@ -38,7 +37,7 @@ export function Form() {
       fetchUsuarios();
       setNome('');
       setCpf('');
-      setSenha('');
+      setSenha(''); 
       setEditId(null);
     } catch (error) {
       console.error('Erro ao salvar usuário:', error);
@@ -76,15 +75,16 @@ export function Form() {
       </form>
       <div className={style.container}>
         <div className={style.content}>
+          <a href='http://localhost:3000/'>voltar para inicial</a>
+          <p>municípios</p>
           <h1>Lista de Usuários</h1>
           <form className={style.form} onSubmit={handleSubmit}>
             <div>
-              <label>Nome:</label>
               <input type='text' value={nome} onChange={(e) => setNome(e.target.value)} required
-                placeholder='DIgite seu nome ou CPF'
+                placeholder='DIgite o nome ou CPF' className={style.inputcpf}
               />
-            </div>
-            <button type='submit'>{editId ? 'Atualizar' : 'Salvar'}</button>
+              <button type='submit' className={style.sep}>{editId ? 'Atualizar' : 'Salvar'}</button>
+            </div>         
           </form>
 
         </div>

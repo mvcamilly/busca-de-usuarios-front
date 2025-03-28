@@ -86,21 +86,22 @@
     border-radius: 5px;
     width: 30%;
     height: 25px;
-    border-color: rgb(208, 213, 213);
+    /* border-color: rgb(208, 213, 213); */
 }
 
-.form>button {
-    margin-left: 48%;
-    margin-top: 30px;
-    background-color: rgb(15, 15, 44);
+.sep {
+    margin-left: 15%;
+    background-color: rgb(70, 70, 196);
     color: aliceblue;
     border-radius: 8px;
-    width: 70px;
+    width: 20%;
     height: 30px;
 }
 
 .table > th {
     text-align: justify;
 }
-
+.inputcpf{
+    width: 300px;
+}
 
