@@ -153,6 +153,9 @@ tr {
    height: 20px;
    border: none;
 }
+.excluirbutton:hover {
+   background-color: rgb(91, 91, 241);; /* Leve tom de vermelho no hover */
+ }
 
 .excluirbutton:hover {
    cursor: pointer;
@@ -248,4 +251,45 @@ tr {
 }
 .desconect:hover {
    background-color: #eae3e3; /* Leve tom de vermelho no hover */
+ }
+
+
+
+ .buttonCancelw{
+   margin-top: 35px;
+   margin-left: 35%;
+   border-radius: 5px;
+   cursor: pointer;
+   width: 80px;
+   height: 30px;
+   border: none;
+ }
+ .buttonCancelw:hover {
+   background-color: #d3cdcd; /* Leve tom de vermelho no hover */
+ }
+
+ .buttonSavew{
+   /* margin-top: ; */
+   margin-left: 16px;
+   background-color: rgb(70, 70, 196);
+   color: white;
+   border-radius: 5px;
+   cursor: pointer;
+   width: 140px;
+   height: 30px;
+   border: none;
+ }
+ .buttonSavew:hover {
+   background-color: rgb(91, 91, 241);; /* Leve tom de vermelho no hover */
+ }
+
+ .modalLabel{
+   margin-left: 10px;
+
+   
+ }
+ .modalInput{
+   width: 90%;
+   margin-left: 10px;
+   margin-top: 15px;
  }

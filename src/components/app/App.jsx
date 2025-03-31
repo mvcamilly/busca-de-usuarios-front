@@ -11,11 +11,8 @@ export function Form() {
   });
   const [data, setData] = useState([]);
   const [nome, setNome] = useState('');
-  // const [cpf, setCpf] = useState('');
-  // const [telefone, setTelefone] = useState('');
   const [usuarioId, setUsuarioId] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false); //controle do modal 
-  // const [correntUser, sitCurrentUser] = useState(null); //armazenar usuario para edição
 
   const navigation = useNavigate()
 
@@ -39,15 +36,6 @@ export function Form() {
         toast.error('Erro ao carregar a lista de usuários.');
       });
   };
-
-  //função para controlar inputs
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value
-  //   }));
-  // };
 
 
   //função para input salvar e não salvar
@@ -261,17 +249,17 @@ export function Form() {
 
             <form>
               <div className={style.modalGroup}>
-                <label className={style.modalLabel}>Nome:</label>
+                <label className={style.modalLabel}>Nome do usuário:</label>
                 <input type="text" className={style.modalInput} />
               </div>
 
               {/* Botões de ação */}
               <div className={style.modalActions}>
-                <button type="button" className={style.buttonSave} onClick={updateUser}>
-                  Salvar
-                </button>
-                <button type="button" className={style.buttonCancel} onClick={closeModal}>
+                <button type="button" className={style.buttonCancelw} onClick={updateUser}>
                   Cancelar
+                </button>
+                <button type="button" className={style.buttonSavew} onClick={closeModal}>
+                  Salvar alterações
                 </button>
               </div>
             </form>
