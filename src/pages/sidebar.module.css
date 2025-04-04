@@ -1,29 +1,30 @@
-.diver{
+.diver {
     display: flex;
     height: 100vh;
     background-color: rgb(255, 255, 255);
 }
 
-.k{
-    display: flex; 
+.k {
+    display: flex;
     margin-top: 30px;
     margin-left: 10%;
     width: 70%;
     height: 30px;
     border-radius: 5px;
 }
-.k:hover{
-   background-color: rgb(195, 198, 198);
-   cursor:pointer;
+
+.k:hover {
+    background-color: rgb(195, 198, 198);
+    cursor: pointer;
 }
 
-.ltr{
+.ltr {
     display: flex;
     flex-direction: column;
     font-size: 17px;
 }
 
-.menu{
+.menu {
     background-color: rgb(242, 245, 247);
     margin: 0;
     padding: 0%;
@@ -81,7 +82,8 @@
 
 }
 
-.form>div label, form>div input {
+.form>div label,
+form>div input {
     /* margin-left: 80px; */
     border-radius: 5px;
     width: 30%;
@@ -90,18 +92,63 @@
 }
 
 .sep {
-    margin-left: 15%;
+    margin-left: 2%;
     background-color: rgb(70, 70, 196);
     color: aliceblue;
     border-radius: 8px;
-    width: 20%;
+    width: 15%;
     height: 30px;
+    border: none;
+}
+.sep:hover{
+    cursor: pointer;
+    background-color: rgb(98, 98, 217);
 }
 
-.table > th {
+.table>th {
     text-align: justify;
 }
-.inputcpf{
-    width: 300px;
+
+.inputcpf {
+    width: 350px;
+    border-radius: 5px;
+    border-color: rgb(239, 240, 241);
+    /* margin-top: 20px; */
+    height: 25px;
+    /* margin-top: 40px; */
+
 }
 
+.desconect {
+    margin-top: 450px;
+    margin-left: 30px;
+    background-color: #f8f8f8;
+    /* Fundo claro */
+    color: rgb(240, 107, 107);
+    /* Texto vermelho */
+    border: 1px solid rgb(220, 214, 214);
+    /* Borda vermelha */
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 80%;
+    font-size: 14px;
+}
+
+.desconect:hover {
+    background-color: #eae3e3;
+    /* Leve tom de vermelho no hover */
+}
+.taBlew{
+    margin-top: 45px;
+}
+.h1{
+    font-size: 25px;
+}
+.tathw{
+    width: 80px;
+}
+.tath{
+    width: 320px;
+}

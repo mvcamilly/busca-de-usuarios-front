@@ -30,6 +30,8 @@
    width: 70%;
    height: 30px;
    border-radius: 5px;
+   /* background-color: rgb(70, 70, 196); */
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
 
 }
 
@@ -45,7 +47,7 @@
 }
 
 .mainpanel {
-   margin-left: 4%;
+   margin-left: 2%;
    margin-top: 60px;
 }
 
@@ -64,15 +66,33 @@
 .buttonsave {
    /* margin-top: px; */
    margin-left: 320px;
-   width: 70px;
-   height: 25px;
+   width: 90px;
+   height: 30px;
+   color: rgb(255, 255, 255);
+   border-radius: 6px;
+   background-color: rgb(70, 70, 196);
+   border: none;
+   /* height: 50px; */
+}
+
+.buttonsave:hover {
+   cursor: pointer;
+   background-color: rgb(70, 70, 196);
+   
+}
+
+.buttonsavepx {
+   /* margin-top: px; */
+   margin-left: 20px;
+   width: 200px;
+   height: 30px;
    color: rgb(255, 255, 255);
    border-radius: 6px;
    background-color: rgb(70, 70, 196);
    border: none;
 }
 
-.buttonsave:hover {
+.buttonsavepx:hover {
    cursor: pointer;
    background-color: rgb(70, 70, 196);
 }
@@ -101,15 +121,13 @@
 
 .maintable {
    margin-top: 15px;
-
+   
 }
 
-.td,
-th,
-tr {
+.td, th, tr {
    height: 50px;
-   width: 300px;
-   border-bottom: 1px solid #9e9c9c;
+   width: 280px;
+   border-bottom: 1px solid #eae7e7;
    overflow-x: auto;
    overflow: auto;
    scroll-snap-type: x mandatory;
@@ -118,13 +136,27 @@ tr {
 
 .td {
    width: 200px;
+   /* border-bottom: #131313; */
+
+}
+.tdi{
+   width: 50px;
+   background-color: rgb(246, 249, 249);
 }
 
 .id {
    width: 1px;
    height: 20px;
    text-align: justify;
+   background-color: rgb(246, 249, 249);
 }
+.tablu {
+   background-color: rgb(246, 249, 249);
+   height: 2px;
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+
 
 .editebutton {
    margin-left: 30px;
@@ -293,3 +325,7 @@ tr {
    margin-left: 10px;
    margin-top: 15px;
  }
+ .bordew{
+   width: 20px;
+ }
+
