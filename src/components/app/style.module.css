@@ -31,7 +31,7 @@
    height: 30px;
    border-radius: 5px;
    /* background-color: rgb(70, 70, 196); */
-   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+   /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ; */
 
 }
 
@@ -48,7 +48,7 @@
 
 .mainpanel {
    margin-left: 2%;
-   margin-top: 60px;
+   margin-top: 35px;
 }
 
 .cadastre {
@@ -65,7 +65,7 @@
 
 .buttonsave {
    /* margin-top: px; */
-   margin-left: 320px;
+   margin-left: 20px; 
    width: 90px;
    height: 30px;
    color: rgb(255, 255, 255);
@@ -77,13 +77,13 @@
 
 .buttonsave:hover {
    cursor: pointer;
-   background-color: rgb(70, 70, 196);
+   background-color: rgb(58, 58, 255);
    
 }
 
 .buttonsavepx {
    /* margin-top: px; */
-   margin-left: 20px;
+   margin-left: 560px;
    width: 200px;
    height: 30px;
    color: rgb(255, 255, 255);
@@ -94,7 +94,7 @@
 
 .buttonsavepx:hover {
    cursor: pointer;
-   background-color: rgb(70, 70, 196);
+   background-color: rgb(58, 58, 255);
 }
 
 .mainentrance {
@@ -120,18 +120,21 @@
 }
 
 .maintable {
-   margin-top: 15px;
+   margin-top: 40px;
    
 }
 
-.td, th, tr {
+.td, tr {
    height: 50px;
-   width: 280px;
    border-bottom: 1px solid #eae7e7;
    overflow-x: auto;
    overflow: auto;
    scroll-snap-type: x mandatory;
    text-align: justify;
+}
+
+.bordew{
+   width: 280px;
 }
 
 .td {

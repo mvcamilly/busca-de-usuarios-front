@@ -7,7 +7,7 @@ export function Table() {
   const [usuarioId, setUsuarioId] = useState(null);
   const [telefone, setTelefone] = useState('');
   const [cpf, setCpf] = useState('');
-  const [ibge, setIbge] = useState('');
+  // const [ibge, setIbge] = useState('');
 
   useEffect(() => {
     fetchUsers();
@@ -24,7 +24,7 @@ export function Table() {
   }
 
   async function updateUsuario(id) {
-    if (!newName || !telefone || !cpf || !ibge) {
+    if (!newName || !cpf) {
       alert('Preencha todos os campos antes de atualizar.');
       return;
     }
@@ -35,7 +35,7 @@ export function Table() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: newName, telefone, cpf, ibge }),
+        body: JSON.stringify({ name: newName, telefone, cpf, }),
       });
       fetchUsers();
       setUsuarioId(null);
@@ -57,28 +57,53 @@ export function Table() {
 
   return (
     <div className={style.mainscreen}>
-      <aside className={style.sidemenu}>
-        <nav>
-          <a href="#" className={style.a}>Edição de usuário</a>
-          <a href="#" className={style.a}>Lista de cadastros</a>
-          <a href="#" className={style.a}>Registros de cadastros</a>
-        </nav>
-      </aside>
-
-      <main className={style.class}>
-        <h2 className={style.cadastre}>Pesquisa de Usuário</h2>
+      <form className={style.sidemenu}>
         <div>
-          <input className={style.input} placeholder="Pesquisar..." />
-          <button className={style.pesquisar}>Pesquisar</button>
+          <label>Menu lateral</label>
         </div>
-        
+        <a href="http://localhost:3000/" className={style.a}>voltar</a>
+        <a href="http://localhost:3000/cadastro" className={style.a}>Lista de cadastros</a>
+        <a className={style.a}>Registros de cadastros</a>
+
+
+        <button className={style.desconect}>Desconectar</button>
+      </form>
+
+      <div className={style.class}>
+        <p>cadastro de procedimento</p>
+        <strong>
+          <label className={style.cadastre}>Cadastro de Procedimento</label>
+        </strong>
+        <div>
+          <input className={style.inputsave} placeholder="Pesquisar..." />
+          <button className={style.savebutton}>Pesquisar</button>
+
+          <button className={style.exportregis}>Exportar registro</button>
+        </div>
+        <div className={style.equipes}>
+          <div className={style.divlabel}>
+            <label className={style.labelquipe}>Equipe</label>
+            <label className={style.labelprof}>Profissional</label>
+            <label className={style.labelbloc}>Bloco</label>
+            <label className={style.labelfilt}>Tipo de filtro</label>
+          </div>
+          <div className={style.divinput}>
+            <input className={style.inputepic}></input>
+            <input className={style.inputepic}></input>
+            <input className={style.inputepic}></input>
+            <input className={style.inputepic}></input>
+          </div>
+          <button className={style.saveepic}>Salvar</button>
+        </div>
+
         <table className={style.meintable}>
           <thead>
-            <tr>
-              <th className={style.thlistuser}>ID</th>
+            <tr className={style.thr}>
               <th className={style.thlistuser}>Nome</th>
-              <th className={style.thlistuser}>Telefone</th>
-              <th className={style.thlistuser}>Ações</th>
+              <th className={style.thlistuser}>Equipes</th>
+              <th className={style.thlistuser}>Profissional</th>
+              <th className={style.thlistuser}>CPF</th>
+              <th className={style.thlistuserdt}>Data de Nascimento</th>
             </tr>
           </thead>
           <tbody>
@@ -95,7 +120,7 @@ export function Table() {
             ))}
           </tbody>
         </table>
-      </main>
+      </div>
     </div>
   );
 }

@@ -145,7 +145,7 @@ export function Form() {
         </div>
 
         <a href='http://localhost:3000/cadastro' className={style.a}>Lista de Cadastro</a>
-        <a type='#' className={style.a}>Edição de Cadastro</a>
+        <a href='http://localhost:3000/listuser' className={style.a}>Cadastro de procedimento</a>
         <a type='#' className={style.a}>Registros de cadastros</a>
 
 
@@ -159,11 +159,12 @@ export function Form() {
         </strong>
         <div>
           <input
+            placeholder='Nome do usuário...'
             className={style.input}
             value={nome}
-            onChange={(e) => setNome(e.target.value)}/>
+            onChange={(e) => setNome(e.target.value) }/>
           <button className={style.buttonsave} onClick={handleSubmit}>Salvar</button>
-          <button className={style.buttonsavepx}>puxar ficha de cadastro</button>
+          <button className={style.buttonsavepx}>Puxar ficha de cadastro</button>
         </div>
         
 

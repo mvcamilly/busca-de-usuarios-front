@@ -68,14 +68,14 @@ export function Form() {
           <label className={style.mn}>Menu Lateral</label>
         </div>
         <a href='http://localhost:3000/' className={style.k}>voltar</a>
-        <a type='#' className={style.k}>Edição de Cadastro:</a>
+        <a href='http://localhost:3000/listuser' className={style.k}>Cadastro de procedimento</a>
         <a type='#' className={style.k}>Registros de cadastros</a>
         <button className={style.desconect}>Desconectar</button>
       </form>
 
       <div className={style.container}>
         <div className={style.content}>
-          <a className={style.aniciF} href='http://localhost:3000/'>voltar para inicial</a>
+          {/* <a className={style.aniciF} href='http://localhost:3000/'>voltar para inicial</a> */}
           <p className={style.muni}>municípios</p>
           <h1 className={style.h1}>Lista de Usuários</h1>
           

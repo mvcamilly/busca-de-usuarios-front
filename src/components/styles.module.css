@@ -1,17 +1,17 @@
-.container {
+/* .container {
     display: flex;
     flex-direction: column;
     background-color: rgba(235, 237, 238, 0.949);
     width: 17%;
-}
+} */
 
-.container>label {
+/* .container>label {
     margin-left: 10px;
     display: flex;
     font-size: 20px;
-}
+} */
 
-.container>input {
+/* .container>input {
     margin-top: 20px;
     margin-left: 20px;
     width: 80%;
@@ -20,9 +20,9 @@
     border-style: double;
     border-color: rgba(208, 212, 213, 0.949);
     
-}
+} */
 
-.container>a {
+/* .container>a {
     margin-top: 20px;
     width: 80%;
     height: 30px;
@@ -31,11 +31,4 @@
     border-radius: 5px;
     margin-left: 18px;
     color:black;
-} 
-
-.container> a:hover {
-    background-color: rgba(85, 89, 151, 0.61); /*blue*/
-    
-    
-
-}
+}  */
