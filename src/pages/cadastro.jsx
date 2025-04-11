@@ -97,9 +97,9 @@ export function Form() {
 
           <table className={style.taBlew}>
             <th className={style.tathw}>ID</th>
-            <th className={style.tath}>Nome</th>
-            <th className={style.tath}>CPF</th>
-            <th className={style.tath}>Detalhes</th>
+            <th className={style.tathno}>Nome</th>
+            <th className={style.tathcpf}>CPF</th>
+            <th className={style.tathdeta}>Detalhes</th>
           </table>
         </div>
       </div>

@@ -39,6 +39,18 @@
      font-size: 14px;
 }
 
+.cadastre {
+     margin-left: 40px;
+     margin-top: 10px;
+     /* font-family: 'Times New Roman', Times, serif; */
+     font-size: 25px;
+
+}
+
+.eoxe{
+     margin-top: 10px;
+}
+
 .class{
      margin-left: 20px;
 }
@@ -58,15 +70,19 @@
 
 .labelquipe {
      margin-left: 40px;
+     font-family: 'Times New Roman', Times, serif;
 }
 .labelprof{
-     margin-left: 250px;
+     margin-left: 220px;
+     font-family: 'Times New Roman', Times, serif;
 }
 .labelbloc{
-     margin-left: 220px;
+     margin-left: 190px;
+     font-family: 'Times New Roman', Times, serif;
 }
 .labelfilt{
-     margin-left: 255px;
+     margin-left: 218px;
+     font-family: 'Times New Roman', Times, serif;
 }
 
 .divinput {
@@ -126,7 +142,7 @@
      width: 220px;
      border-radius: 5px;
      border-color: rgb(239, 240, 241);
-     margin-top: 20px;
+     margin-top: 5px;
      height: 20px;
      margin-left: 40px;
 }
@@ -136,13 +152,38 @@
      cursor: pointer;
 }
 
+.meintable {
+     /* background-color: #dfdbdb; */
+     text-align: center;
+     width: 1000px;
+     margin-left: 40px;
+     margin-top: 35px;
+     border-radius: 3px;
+     animation-direction: normal;
+     animation-duration: 2s;
+}
 .thlistuser {
      width: 150px;
      background-color: rgb(246, 249, 249);
 }
-
-.thlistuserdt {
+.thlistuserno{
+     width: 300px;
+     background-color: rgb(246, 249, 249);
+}
+.thlistuserequi{
      width: 250px;
+     background-color: rgb(246, 249, 249);
+}
+.thlistuserprof{
+     width: 400px;
+     background-color: rgb(246, 249, 249);
+}
+.thlistusercpf{
+     width: 250px;
+     background-color: rgb(246, 249, 249);
+}
+.thlistuserdt {
+     width: 300px;
      background-color: rgb(246, 249, 249);
 }
 
@@ -152,33 +193,13 @@
      background-color: rgb(255, 255, 255);
 }
 
-.cadastre {
-     margin-left: 50px;
-
-}
-
 .component {
      margin-left: 50px;
      font-size: 15px;
 }
-
-
 
 .inputequipe {
      margin-left: 100px;
      margin-top: 15px;
 }
 
-
-
-
-.meintable {
-     /* background-color: #dfdbdb; */
-     text-align: center;
-     width: 1000px;
-     margin-left: 30px;
-     margin-top: 35px;
-     border-radius: 3px;
-     animation-direction: normal;
-     animation-duration: 2s;
-}

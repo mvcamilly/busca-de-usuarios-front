@@ -137,18 +137,34 @@ form>div input {
 }
 
 .desconect:hover {
-    background-color: #eae3e3;
+    background-color: #f3efef;
     /* Leve tom de vermelho no hover */
 }
 .taBlew{
     margin-top: 45px;
+    /* background-color:rgb(246, 249, 249); */
+    height: 40px;
 }
 .h1{
     /* font-size: 25px; */
 }
 .tathw{
-    width: 80px;
+    width: 60px;
+    background-color: rgb(246, 249, 249);
+    text-align: justify;
 }
-.tath{
-    width: 320px;
+.tathno{
+    width: 350px;
+    background-color: rgb(246, 249, 249);
+    text-align: justify;
+}
+.tathcpf{
+    width: 230px;
+    background-color: rgb(246, 249, 249);
+    text-align: justify;
+}
+.tathdeta{
+    width: 180px;
+    background-color: rgb(246, 249, 249);
+    text-align: justify;
 }

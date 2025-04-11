@@ -74,7 +74,7 @@ export function Table() {
         <strong>
           <label className={style.cadastre}>Cadastro de Procedimento</label>
         </strong>
-        <div>
+        <div className={style.eoxe}>
           <input className={style.inputsave} placeholder="Pesquisar..." />
           <button className={style.savebutton}>Pesquisar</button>
 
@@ -82,10 +82,10 @@ export function Table() {
         </div>
         <div className={style.equipes}>
           <div className={style.divlabel}>
-            <label className={style.labelquipe}>Equipe</label>
-            <label className={style.labelprof}>Profissional</label>
-            <label className={style.labelbloc}>Bloco</label>
-            <label className={style.labelfilt}>Tipo de filtro</label>
+            <label className={style.labelquipe}>Equipe:</label>
+            <label className={style.labelprof}>Profissional:</label>
+            <label className={style.labelbloc}>Bloco:</label>
+            <label className={style.labelfilt}>Tipo de filtro:</label>
           </div>
           <div className={style.divinput}>
             <input className={style.inputepic}></input>
@@ -99,10 +99,10 @@ export function Table() {
         <table className={style.meintable}>
           <thead>
             <tr className={style.thr}>
-              <th className={style.thlistuser}>Nome</th>
-              <th className={style.thlistuser}>Equipes</th>
-              <th className={style.thlistuser}>Profissional</th>
-              <th className={style.thlistuser}>CPF</th>
+              <th className={style.thlistuserno}>Nome</th>
+              <th className={style.thlistuserequi}>Equipes</th>
+              <th className={style.thlistuserprof}>Profissional</th>
+              <th className={style.thlistusercpf}>CPF</th>
               <th className={style.thlistuserdt}>Data de Nascimento</th>
             </tr>
           </thead>
