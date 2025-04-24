@@ -67,17 +67,17 @@ export function Form() {
         <div className={style.ltr}>
           <label className={style.mn}>Menu Lateral</label>
         </div>
-        <a href='http://localhost:3000/' className={style.k}>voltar</a>
+        <a href='http://localhost:3000/' className={style.k}>Lista de Usuários</a>
         <a href='http://localhost:3000/listuser' className={style.k}>Cadastro de procedimento</a>
-        <a type='#' className={style.k}>Registros de cadastros</a>
+        <a href='http://localhost:3000/head' className={style.k}>Lista de profissionais</a>
         <button className={style.desconect}>Desconectar</button>
       </form>
 
       <div className={style.container}>
         <div className={style.content}>
           {/* <a className={style.aniciF} href='http://localhost:3000/'>voltar para inicial</a> */}
-          <p className={style.muni}>municípios</p>
-          <h1 className={style.h1}>Lista de Usuários</h1>
+          <p className={style.muni}>Lista de cadastro</p>
+          <h1 className={style.h1}>Lista de cadastro</h1>
           
           <form className={style.form} onSubmit={handleSubmit}>
             <div className="flex gap-2 items-center">

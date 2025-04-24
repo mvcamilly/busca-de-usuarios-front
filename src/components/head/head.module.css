@@ -1,81 +1,92 @@
-header {
-    color: rgb(0, 0, 0);
+.sidelatel {
+    background-color: rgb(242, 245, 247);
+    margin: 0;
+    padding: 0%;
+    width: 19%;
+    height: 100%;
+    border-color: #9e9c9c;
 }
 
-
-.cadastro {
-    font-size: 25px;
-    border-radius: 10%;
+.lateralhead {
     display: flex;
-    justify-content: center;
-    padding: 1.25rem 0;
+    flex-direction: column;
+    font-size: 17px;
 }
 
-
-.name {
+.divhead {
     display: flex;
-
-    margin-top: 20px;
-    margin-left: 5%;
-    font-family: Inter;
-}
-
-.lab {
-    font-size: 20px;
-}
-
-.tab {
-    margin-top: 17px;
-    margin-left: 5%;
-
-    width: 90%;
-    height: 25px;
-    border-radius: 6px;
-    border-style: double;
-    border-width: 2px;
-    border-color: rgb(219, 219, 215);
-}
-
-.OK {
-    width: 30%;
-    height: 25px;
-    background-color: rgb(15, 15, 44);
-    color: white;
-    border-radius: 8px;
-    margin-top: 35px;
-    margin-left: 190px;
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 1s linear, white;
-    font-family: Inter;
-}
-
-.comp {
-    width: 20px;
-    height: 15px;
-
-    margin-left: 20px;
-}
-
-.table {
-    width: 23%;
-    /* height: 400px; */
-
-    padding: 1rem;
-    border-radius: 10px;
-    border-color: rgb(240, 236, 236);
-    border-style: outset;
-
-    margin-top: 150px;
-    margin-left: 38%;
-}
-
-.div1 {
-
     height: 100vh;
+    background-color: rgb(255, 255, 255);
 }
 
-.CADASTAB {
-    margin-left: 15px;
-    font-size: 25px;
-    font-family: Inter;}
+.ahead {
+    display: flex;
+    margin-top: 30px;
+    margin-left: 10%;
+    width: 70%;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.ahead:hover {
+    background-color: rgb(195, 198, 198);
+    cursor: pointer;
+}
+
+.desconecthead {
+    margin-top: 500px;
+    margin-left: 30px;
+    background-color: #f8f8f8;
+    /* Fundo claro */
+    color: rgb(240, 107, 107);
+    /* Texto vermelho */
+    border: 1px solid rgb(220, 214, 214);
+    /* Borda vermelha */
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 80%;
+    font-size: 14px;
+}
+
+.desconecthead:hover {
+    background-color: #eae3e3;
+    /* Leve tom de vermelho no hover */
+}
+
+.mainpanelhead {
+    margin-left: 2%;
+    margin-top: 35px;
+}
+
+.inputhead {
+    width: 300px;
+    border-radius: 5px;
+    border-color: rgb(239, 240, 241);
+    margin-top: 20px;
+    height: 25px;
+}
+
+.buttonhead {
+    margin-left: 20px;
+    width: 90px;
+    height: 30px;
+    color: rgb(255, 255, 255);
+    border-radius: 6px;
+    background-color: rgb(70, 70, 196);
+    border: none;
+}
+
+.buttonhead:hover {
+    cursor: pointer;
+    background-color: rgb(58, 58, 255);
+}
+.bordhead{
+    width: 300px;
+}
+.thead{
+    background-color: rgb(246, 249, 249);
+    height: 2px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}

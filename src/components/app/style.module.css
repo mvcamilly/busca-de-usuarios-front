@@ -23,7 +23,7 @@
    margin-left: 30px;
 }
 
-.a {
+.a{
    display: flex;
    margin-top: 30px;
    margin-left: 10%;
@@ -163,7 +163,7 @@
 
 .editebutton {
    margin-left: 30px;
-   background-color: rgb(70, 70, 196);
+   background-color: rgb(29, 136, 36);
    color: white;
    border-radius: 5px;
    cursor: pointer;
@@ -175,12 +175,12 @@
 
 .editebutton:hover {
    cursor: pointer;
-   background-color: rgb(70, 70, 196);
+   background-color: rgb(20, 91, 45);
 }
 
 .excluirbutton {
    margin-left: 10px;
-   background-color: rgb(70, 70, 196);
+   background-color: rgb(226, 49, 46);
    color: white;
    border-radius: 5px;
    cursor: pointer;
@@ -189,12 +189,12 @@
    border: none;
 }
 .excluirbutton:hover {
-   background-color: rgb(91, 91, 241);; /* Leve tom de vermelho no hover */
+   background-color: rgb(223, 44, 25);; /* Leve tom de vermelho no hover */
  }
 
 .excluirbutton:hover {
    cursor: pointer;
-   background-color: rgb(70, 70, 196);
+   background-color: rgb(160, 29, 29);
 }
 
 .closeX:hover {

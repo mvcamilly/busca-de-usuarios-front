@@ -146,16 +146,16 @@ export function Form() {
 
         <a href='http://localhost:3000/cadastro' className={style.a}>Lista de Cadastro</a>
         <a href='http://localhost:3000/listuser' className={style.a}>Cadastro de procedimento</a>
-        <a type='#' className={style.a}>Registros de cadastros</a>
+        <a href='http://localhost:3000/head' className={style.a}>Lista de profissionais</a>
 
 
         <button className={style.desconect}>Desconectar</button>
       </form>
 
       <div className={style.mainpanel}>
-        <p>Cadastro de usuário</p>
+        <p>Lista de usuário</p>
         <strong>
-          <label className={style.cadastre}>Cadastro de usuário</label>
+          <label className={style.cadastre}>Lista de usuário</label>
         </strong>
         <div>
           <input
@@ -167,7 +167,6 @@ export function Form() {
           <button className={style.buttonsavepx}>Puxar ficha de cadastro</button>
         </div>
         
-
         <table className={style.maintable}>
           <thead>
             <tr className={style.bordew}>
@@ -185,7 +184,7 @@ export function Form() {
                 <td className={style.tdi}>{item.id}</td>
                 <td className={style.td}>{item.nome}</td>
                 <td className={style.td}>{item.cpf}</td>
-                <td className={style.td}>{item.datadecadastro }</td>
+                <td className={style.td}>{item.datadecadastro}</td>
                 <td className={style.td}>
                   <button
                     className={style.editebutton}

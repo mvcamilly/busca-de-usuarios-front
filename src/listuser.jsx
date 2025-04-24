@@ -61,12 +61,12 @@ export function Table() {
         <div>
           <label>Menu lateral</label>
         </div>
-        <a href="http://localhost:3000/" className={style.a}>voltar</a>
-        <a href="http://localhost:3000/cadastro" className={style.a}>Lista de cadastros</a>
-        <a className={style.a}>Registros de cadastros</a>
+        <a href="http://localhost:3000/" className={style.listena}>Lista de Usuários</a>
+        <a href="http://localhost:3000/cadastro" className={style.listena}>Lista de cadastros</a>
+        <a href="http://localhost:3000/head" className={style.listena}>Lista de Profissionais</a>
 
 
-        <button className={style.desconect}>Desconectar</button>
+        <button className={style.listendesconect}>Desconectar</button>
       </form>
 
       <div className={style.class}>
@@ -104,6 +104,7 @@ export function Table() {
               <th className={style.thlistuserprof}>Profissional</th>
               <th className={style.thlistusercpf}>CPF</th>
               <th className={style.thlistuserdt}>Data de Nascimento</th>
+              <th className={style.thlistusersitu}>Situação</th>
             </tr>
           </thead>
           <tbody>
